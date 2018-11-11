@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugos on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/hugo/</link>
+    <description>Recent content in Hugos on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Nov 2018 18:51:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo搭建个人博客</title>
+      <link>https://falconkaze.github.io/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sun, 11 Nov 2018 18:51:02 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>参考文章： * hugo quick start
+安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：
+my-site/ ├── archetypes content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。 ├── config.toml 网站配置文件 ├── content 网站内容，全部使用markdown格式 ├── data ├── layouts 包含网站的模板，决定内容的显示方式 ├── resources ├── static 包含css，js，fonts，media，决定网站的外观 └── themes 主题，默认主题从这里选取  添加主题 hugo 主题仓库
+cd my-site # 安装所有主题 git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes # 安装某一个主题 cd themes git clone URL_TO_THEME # 在配置文件中指定所要使用的主题 echo &#39;theme = &amp;quot;theme-name&amp;quot;&#39; &amp;gt;&amp;gt; config.</description>
+    </item>
+    
+  </channel>
+</rss>
