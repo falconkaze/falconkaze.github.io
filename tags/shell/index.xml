@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shell on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/shell/</link>
+    <description>Recent content in Shell on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 Feb 2019 21:41:43 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shell下进制转换</title>
+      <link>https://falconkaze.github.io/article/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Mon, 11 Feb 2019 21:41:43 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/article/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</guid>
+      <description> shell脚本的数值默认按10进制处理。以0开头的数字为8进制，以0x开头的数字为16进制。使用BASE#NUMBER这种形式可以表示其他进制（2-64）。
+其他进制转10进制 ((num=012)) ((num=0x12)) ((num=16#FF)) echo $num echo $((012)) echo $((16#FF)) let num=012 let num=16#12 echo $num printf &amp;quot;%d\n&amp;quot; 0xf printf &amp;quot;%d\n&amp;quot; 011  shell中的”=“没有值类型，默认会将后面的值变成字符串。而(())中可以进行数值运算
+十进制转其他进制 printf &amp;quot;%x\n&amp;quot; 15 echo &amp;quot;obase=进制;值&amp;quot; | bc echo &amp;quot;obase=64;12&amp;quot; | bc  </description>
+    </item>
+    
+  </channel>
+</rss>

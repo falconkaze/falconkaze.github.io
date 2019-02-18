@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.51" />
+    <meta name="generator" content="Hugo 0.54.0" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -35,7 +35,8 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://falconkaze.github.io/hugo/" />
-<meta property="og:updated_time" content="2018-11-11T18:51:02&#43;08:00"/>
+
+<meta property="og:updated_time" content="2018-11-11T19:19:36&#43;08:00"/>
 
 <meta itemprop="name" content="Hugos">
 <meta itemprop="description" content="">
@@ -93,13 +94,31 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Hugo</span>
     <h1 class="f3 near-black">
+      <a href="/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="link black dim">
+        Hugo配置文件详解
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+       参考文章：
+ Configurate Hugo  hugo默认会在网站根目录下查找配置文件，依次会使用config.toml,config.yaml,config.json。也可以使用下面命令来指定配置文件。
+hugo --config debugconfig.toml hugo --config a.toml,b.toml,c.toml  查看配置 hugo config # 查看当前配置  基本配置 下面的所有的属性由config-name(default-value)组成。
+baseUrl(&quot;http://example.org&quot;) 网站主页url defaultContentLanguage(&quot;en&quot;) paginate(10) 分页中每页的默认数量 metaDataFormat(&quot;toml&quot;) 前面的元数据格式。有效值，toml，yaml，json theme(&quot;&quot;) 指定主题 title(&quot;&quot;) 网站名字 watch(false) 是否启动热部署。 newContentEditor(&quot;&quot;) 创建新内容时的默认编辑器 noChmod(false) 是否同步文件的权限 noTimes(false) 是否同步文件的修改时间 pygmentsCodeFencesGuessSyntax(false) 在代码没有指定语言的时候，启用语法猜测。 pygmentsStyle(&quot;monokai&quot;) 语法高亮的颜色主题。[可用语法主题](https://help.farbox.com/pygments.html) pygmentsUseClasses(false) 使用外部css来实现语法高亮 summaryLength(70) timeout(10000) 生成页面的超时时间，默认10s。这个设置主要是为了避免递归页面 buildDrafts(false) 是否显示标注为draft的content buildExpired(false) 是否显示过期的内容 buildFuture(false) 是否显示未来发布的内容 archetypeDir(&quot;archtypes&quot;) assetDir(&quot;assets&quot;) contentDir(&quot;content&quot;) dataDir(&quot;data&quot;) publicDir(&quot;public&quot;) themesDir(&quot;themes&quot;) blackfriday canonifyURLs(false) 是否将相对url转为绝对 defaultContentLanguageInSubdir(false) 在子文件夹中渲染默认语言，例如：content/en/。网站的根目录将重定向到/en/  使用环境变量来配置 
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Hugo</span>
+    <h1 class="f3 near-black">
       <a href="/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="link black dim">
         Hugo搭建个人博客
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      参考文章： * hugo quick start
-安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：
+      参考文章：
+ hugo quick start 零基础使用Hugo和GitHub Pages创建自己的博客  安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：
 my-site/ ├── archetypes content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。 ├── config.toml 网站配置文件 ├── content 网站内容，全部使用markdown格式 ├── data ├── layouts 包含网站的模板，决定内容的显示方式 ├── resources ├── static 包含css，js，fonts，media，决定网站的外观 └── themes 主题，默认主题从这里选取  添加主题 hugo 主题仓库
 cd my-site # 安装所有主题 git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes # 安装某一个主题 cd themes git clone URL_TO_THEME # 在配置文件中指定所要使用的主题 echo 'theme = &quot;theme-name&quot;' &gt;&gt; config.
     </div>
@@ -114,7 +133,7 @@ cd my-site # 安装所有主题 git clone --depth 1 --recursive https://github.c
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://falconkaze.github.io/" >
-    &copy; 2018 每天进步一点点
+    &copy; 2019 每天进步一点点
   </a>
     <div>
 
