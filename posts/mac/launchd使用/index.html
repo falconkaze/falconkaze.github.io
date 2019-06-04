@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/java/mybatis/typehandler%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/mac/launchd%E4%BD%BF%E7%94%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Launchd使用 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Launchd使用 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Launchd使用",
+    "headline" : "Launchd使用",
+    "description" : "mac下使用launchctl  launchd是mac上自带的一个执行任务的服务",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-21 21:13:40 \x2b0800 CST",
+    "dateModified" : "2019-03-21 21:13:40 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/mac\/launchd%E4%BD%BF%E7%94%A8\/",
+    "wordCount" : "2",
+    "keywords" : [ "mac","auto","launchd", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Launchd使用</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-21 itemprop="datePublished">March 21, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/launchd/"> launchd </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <ul>
+<li><a href="http://www.xiaocai.name/2017/07/07/Mac%E4%B8%8B%E7%9A%84launchctl%E4%BD%BF%E7%94%A8/">mac下使用launchctl</a></li>
+</ul>
+
+<p>launchd是mac上自带的一个执行任务的服务</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/mac/launchd%E4%BD%BF%E7%94%A8/>https://falconkaze.github.io/posts/mac/launchd%E4%BD%BF%E7%94%A8/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/mac/">
+                    #mac</a></span>
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/auto/">
+                    #auto</a></span>
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/launchd/">
+                    #launchd</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="prev" rel="prev" title="Java8 Stream常用操作"><i class="iconfont icon-left"></i>&nbsp;Java8 Stream常用操作</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/java/mybatis/typehandler%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="next" rel="next" title="TypeHandler自定义类型转换">TypeHandler自定义类型转换&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/java/h2/h2%E8%87%AA%E5%AE%9A%E4%B9%89sql%E5%87%BD%E6%95%B0/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           单例模式 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="单例模式 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "单例模式",
+    "headline" : "单例模式",
+    "description" : "参考:\n 双重检查锁问题 JAVA设计模式之单例模式  对于一些类来说，只有一个实例是非常重要的。比如计算机系统可以安装多个窗口管理器，但是同一时间只能使用一个；火车售票处可以有多个窗口同时出售车票，但是票源都是来自同一个地方。\n单例模式的作用就是保证一个类只有一个实例，并提供一个访问它的全局访问点。选择单例模式通常是为了避免不一致状态。除了避免不一致之外，还有一种情况可以使用单例模式：当类的对象是无状态的，或者它的状态事实不可变时，这时候创建多个对象的作用与一个对象没有什么区别，可以用单例模式避免对象的重复创建。比如在Spring mvc程序中，Controller，Service，Dao通常都是单例。\n单例模式有以下特点：\n 单例类只能有一个实例。\n 单例类必须有一个接口来给其他外部提供这一实例。\n 通常单例类来创建自己的唯一实例。\n  单例模式的实现方法有好几种：懒汉式单例、饿汉式单例、登记式单例。\n懒汉式单例 懒汉式单例的特点是在需要时才创建实例，可以避免或延迟对象创建的开销和内存的消耗。\n 线程不安全的实现  public class Singleton{ private Singleton{} private static Singleton single = null; public static Singleton getInstance(){ if (single == null){ single = new Singleton(); } return single; } }  这里将构造方法设为private，将对象的创建权独占在本类中（实际上，通过java反射机制可以实例化构造方法为private的类的），从而保证单例的实现。因为上面例子中存在先检查后执行的逻辑，并且没有进行同步，所以在多线程中可能会有问题。下面介绍几种多线程下的懒汉单例实现。\n 在getInstance方法上加同步锁  public static synchronized Singleton getInstance(){ if (single == null){ single = new Singleton(); } return single; }  这个方法可以保证线程安全，但是单例模式只需要在对象创建的时候进行同步，对象创建后就没必要进行同步了，所以这种方法不必要的性能损耗。",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-06-02 15:06:29 \x2b0800 CST",
+    "dateModified" : "2019-06-02 15:06:29 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/design-pattern\/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "166",
+    "keywords" : [ "设计模式", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">单例模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-06-02 itemprop="datePublished">June 2, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"> 设计模式 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p><strong>参考:</strong></p>
+
+<ul>
+<li><a href="https://blog.csdn.net/Dongguabai/article/details/82828125">双重检查锁问题</a></li>
+<li><a href="https://blog.csdn.net/jason0539/article/details/23297037">JAVA设计模式之单例模式</a></li>
+</ul>
+
+<p>对于一些类来说，只有一个实例是非常重要的。比如计算机系统可以安装多个窗口管理器，但是同一时间只能使用一个；火车售票处可以有多个窗口同时出售车票，但是票源都是来自同一个地方。</p>
+
+<p>单例模式的作用就是保证一个类只有一个实例，并提供一个访问它的全局访问点。选择单例模式通常是为了避免不一致状态。除了避免不一致之外，还有一种情况可以使用单例模式：当类的对象是无状态的，或者它的状态事实不可变时，这时候创建多个对象的作用与一个对象没有什么区别，可以用单例模式避免对象的重复创建。比如在Spring mvc程序中，Controller，Service，Dao通常都是单例。</p>
+
+<p>单例模式有以下特点：</p>
+
+<ol>
+<li><p>单例类只能有一个实例。</p></li>
+
+<li><p>单例类必须有一个接口来给其他外部提供这一实例。</p></li>
+
+<li><p>通常单例类来创建自己的唯一实例。</p></li>
+</ol>
+
+<p>单例模式的实现方法有好几种：懒汉式单例、饿汉式单例、登记式单例。</p>
+
+<h2 id="懒汉式单例">懒汉式单例</h2>
+
+<p>懒汉式单例的特点是在需要时才创建实例，可以避免或延迟对象创建的开销和内存的消耗。</p>
+
+<ol>
+<li>线程不安全的实现</li>
+</ol>
+
+<pre><code class="language-java">  public class Singleton{
+    private Singleton{}
+    private static Singleton single = null;
+    public static Singleton getInstance(){
+      if (single == null){
+        single = new Singleton();
+      }
+      return single;
+    }
+  }
+</code></pre>
+
+<p>这里将构造方法设为private，将对象的创建权独占在本类中（实际上，通过java反射机制可以实例化构造方法为private的类的），从而保证单例的实现。因为上面例子中存在先检查后执行的逻辑，并且没有进行同步，所以在多线程中可能会有问题。下面介绍几种多线程下的懒汉单例实现。</p>
+
+<ol>
+<li>在getInstance方法上加同步锁</li>
+</ol>
+
+<pre><code class="language-java">  public static synchronized Singleton getInstance(){
+    if (single == null){
+      single = new Singleton();
+    }
+    return single;
+  }
+</code></pre>
+
+<p>这个方法可以保证线程安全，但是单例模式只需要在对象创建的时候进行同步，对象创建后就没必要进行同步了，所以这种方法不必要的性能损耗。</p>
+
+<ol>
+<li>双重检查锁定（DCL）</li>
+</ol>
+
+<pre><code class="language-java">  public class Singleton {
+    private static volitile Singleton singleton;
+    public static Singleton getInstance(){
+      if(singleton == null){
+        synchronized(Singleton.class){
+          if(singleton == null){
+            singleton = new Singleton();
+          }
+        }
+      }
+      return singleton;
+    }
+  }
+</code></pre>
+
+<p>这里要注意一点，类成员变量singleton必须指定volitile。这是因为上面的代码保证了原子性，但是没有保证singleton的可见性。对象的创建包含三个步骤：</p>
+
+<p>a. 分配内存</p>
+
+<p>b. 初始化对象</p>
+
+<p>c. 内存赋值给引用</p>
+
+<p>由于指令重排序的存在，b和c的顺序可能对调。在这种情况下，当一个线程执行完c步骤（singleton就不为null了），如果另一个线程执行到第一个if处，就会认为对象创建成功，从而返回一个未构造完成的对象。而volitile可以避免指令重排序，就避免了这种异常情况。</p>
+
+<p>DCL模式出现是因为无竞争同步的执行速度很慢，JVM启动时很慢，这种现象已经不存在了。另外这种方式灵活性较差，如果一个对象在构造结束后还需要set一些值或者做一些额外的操作才算对象创建结束，由于DCL根据对象是否为null来判断对象是否创建结束，就会产生一定的问题。这种方式并不是很推荐使用。</p>
+
+<ol>
+<li>静态内部类</li>
+</ol>
+
+<pre><code class="language-java">  public class Singleton {
+    private Singleton{}
+    private static class LazyHolder {
+      private static final Singleton INSTANCE = new Singleton();
+    }
+    public static final Singleton getInstance(){
+      return LazyHolder.INSTANCE;
+    }
+  }
+</code></pre>
+
+<p>这种方式利用JVM的类加载过程是线程安全的来保证单例对象创建过程的线程安全。</p>
+
+<h2 id="饿汉式单例">饿汉式单例</h2>
+
+<p>饿汉式单例在类加载的时候就进行了类的创建，利用了类加载过程的线程安全性。</p>
+
+<ol>
+<li>第一种方式</li>
+</ol>
+
+<pre><code class="language-java">  public class Singleton{
+    private Singleton{}
+    private static final Singleton singleton = new Singleton();
+    public static Singleton getInstance(){
+      return singleton;
+    }
+  }
+</code></pre>
+
+<p>如果类的创建过程比较复杂，可以利用静态代码块来创建。</p>
+
+<ol>
+<li>利用枚举实现单例</li>
+</ol>
+
+<pre><code class="language-java">  public enum Singleton {
+    INSTANCE;
+  }
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/>https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                    #设计模式</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="设计模式"><i class="iconfont icon-left"></i>&nbsp;设计模式</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/java/h2/h2%E8%87%AA%E5%AE%9A%E4%B9%89sql%E5%87%BD%E6%95%B0/" class="next" rel="next" title="H2自定义sql函数">H2自定义sql函数&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

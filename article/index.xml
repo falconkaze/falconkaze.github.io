@@ -6,44 +6,20 @@
     <description>Recent content in Articles on 每天进步一点点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Feb 2019 21:41:43 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Mar 2019 22:25:18 +0800</lastBuildDate>
     
 	<atom:link href="https://falconkaze.github.io/article/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Shell下进制转换</title>
-      <link>https://falconkaze.github.io/article/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</link>
-      <pubDate>Mon, 11 Feb 2019 21:41:43 +0800</pubDate>
+      <title>001 二维数组中的查找</title>
+      <link>https://falconkaze.github.io/article/algorithm/nowcoder/%E5%89%91%E6%8C%87offer/001-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</link>
+      <pubDate>Wed, 13 Mar 2019 22:25:18 +0800</pubDate>
       
-      <guid>https://falconkaze.github.io/article/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</guid>
-      <description> shell脚本的数值默认按10进制处理。以0开头的数字为8进制，以0x开头的数字为16进制。使用BASE#NUMBER这种形式可以表示其他进制（2-64）。
-其他进制转10进制 ((num=012)) ((num=0x12)) ((num=16#FF)) echo $num echo $((012)) echo $((16#FF)) let num=012 let num=16#12 echo $num printf &amp;quot;%d\n&amp;quot; 0xf printf &amp;quot;%d\n&amp;quot; 011  shell中的”=“没有值类型，默认会将后面的值变成字符串。而(())中可以进行数值运算
-十进制转其他进制 printf &amp;quot;%x\n&amp;quot; 15 echo &amp;quot;obase=进制;值&amp;quot; | bc echo &amp;quot;obase=64;12&amp;quot; | bc  </description>
-    </item>
-    
-    <item>
-      <title>Hugo配置文件详解</title>
-      <link>https://falconkaze.github.io/article/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
-      <pubDate>Sun, 11 Nov 2018 19:19:36 +0800</pubDate>
-      
-      <guid>https://falconkaze.github.io/article/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
-      <description> 参考文章：
- Configurate Hugo  hugo默认会在网站根目录下查找配置文件，依次会使用config.toml,config.yaml,config.json。也可以使用下面命令来指定配置文件。
-hugo --config debugconfig.toml hugo --config a.toml,b.toml,c.toml  查看配置 hugo config # 查看当前配置  基本配置 下面的所有的属性由config-name(default-value)组成。
-baseUrl(&amp;quot;http://example.org&amp;quot;) 网站主页url defaultContentLanguage(&amp;quot;en&amp;quot;) paginate(10) 分页中每页的默认数量 metaDataFormat(&amp;quot;toml&amp;quot;) 前面的元数据格式。有效值，toml，yaml，json theme(&amp;quot;&amp;quot;) 指定主题 title(&amp;quot;&amp;quot;) 网站名字 watch(false) 是否启动热部署。 newContentEditor(&amp;quot;&amp;quot;) 创建新内容时的默认编辑器 noChmod(false) 是否同步文件的权限 noTimes(false) 是否同步文件的修改时间 pygmentsCodeFencesGuessSyntax(false) 在代码没有指定语言的时候，启用语法猜测。 pygmentsStyle(&amp;quot;monokai&amp;quot;) 语法高亮的颜色主题。[可用语法主题](https://help.farbox.com/pygments.html) pygmentsUseClasses(false) 使用外部css来实现语法高亮 summaryLength(70) timeout(10000) 生成页面的超时时间，默认10s。这个设置主要是为了避免递归页面 buildDrafts(false) 是否显示标注为draft的content buildExpired(false) 是否显示过期的内容 buildFuture(false) 是否显示未来发布的内容 archetypeDir(&amp;quot;archtypes&amp;quot;) assetDir(&amp;quot;assets&amp;quot;) contentDir(&amp;quot;content&amp;quot;) dataDir(&amp;quot;data&amp;quot;) publicDir(&amp;quot;public&amp;quot;) themesDir(&amp;quot;themes&amp;quot;) blackfriday canonifyURLs(false) 是否将相对url转为绝对 defaultContentLanguageInSubdir(false) 在子文件夹中渲染默认语言，例如：content/en/。网站的根目录将重定向到/en/  使用环境变量来配置 </description>
-    </item>
-    
-    <item>
-      <title>Hugo搭建个人博客</title>
-      <link>https://falconkaze.github.io/article/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Sun, 11 Nov 2018 18:51:02 +0800</pubDate>
-      
-      <guid>https://falconkaze.github.io/article/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>参考文章：
- hugo quick start 零基础使用Hugo和GitHub Pages创建自己的博客  安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：
-my-site/ ├── archetypes content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。 ├── config.toml 网站配置文件 ├── content 网站内容，全部使用markdown格式 ├── data ├── layouts 包含网站的模板，决定内容的显示方式 ├── resources ├── static 包含css，js，fonts，media，决定网站的外观 └── themes 主题，默认主题从这里选取  添加主题 hugo 主题仓库
-cd my-site # 安装所有主题 git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes # 安装某一个主题 cd themes git clone URL_TO_THEME # 在配置文件中指定所要使用的主题 echo &#39;theme = &amp;quot;theme-name&amp;quot;&#39; &amp;gt;&amp;gt; config.</description>
+      <guid>https://falconkaze.github.io/article/algorithm/nowcoder/%E5%89%91%E6%8C%87offer/001-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</guid>
+      <description>直接遍历所有元素，存在相等返回true，不然返回false。  运行时间159ms, 占用内存176316k
+public boolean Find(int target, int [][] array) { for(int[] array1 : array){ for(int value :array1){ if (value == target){ return true; } } } return false; }   因为数组每一行都是递增的，可以使用二分查找。  时间 173ms, 占用内存17428k
+public boolean Find(int target, int [][] array) { for(int[] array1: array){ if (array1.length == 0 || array1[0] &amp;gt; target || array1[array1.length - 1] &amp;lt; target){ continue; } if(array1[0] == target || array1[array1.</description>
     </item>
     
   </channel>

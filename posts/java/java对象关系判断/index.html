@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Java对象关系判断 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Java对象关系判断 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Java对象关系判断",
+    "headline" : "Java对象关系判断",
+    "description" : " 判断对象是不是类的实例 使用instanceof。一个类的对象也是它超类或超接口的实例，通常在类型强转前需要instanceof判断，避免抛出异常。\nObject value = new Integer; if(value instanceof CharSequence){ System.out.println(\x26quot;value is not a instance of CharSequence\x26quot;); }  判断Class对象对应的类之间的关系 使用class1.isAssignableFrom(class2)，判断class1表示类或接口是否和class2表示的相同或者是其超类或者超接口，返回true、false。基本类型没有超类或超接口，也就是说当class2为基本类型的class对象时，只有class1为也为class2时，才返回true。\nSystem.out.println(\x26quot;\x26quot; \x2b int.class.isAssignableFrom(int.class)); System.out.println(\x26quot;\x26quot; \x2b Object.class.isAssignableFrom(int.class)); System.out.println(\x26quot;\x26quot; \x2b Object.class.isAssignableFrom(String.class)); System.out.println(\x26quot;\x26quot; \x2b Object.class.isAssignableFrom(char.class));  ",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-05 10:01:05 \x2b0800 CST",
+    "dateModified" : "2019-03-05 10:01:05 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/java\/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD\/",
+    "wordCount" : "32",
+    "keywords" : [ "java", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Java对象关系判断</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-05 itemprop="datePublished">March 5, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/java/"> java </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="判断对象是不是类的实例">判断对象是不是类的实例</h2>
+
+<p>使用instanceof。一个类的对象也是它超类或超接口的实例，通常在类型强转前需要instanceof判断，避免抛出异常。</p>
+
+<pre><code class="language-java">  Object value = new Integer;
+  if(value instanceof CharSequence){
+    System.out.println(&quot;value is not a instance of CharSequence&quot;);
+  }
+</code></pre>
+
+<h2 id="判断class对象对应的类之间的关系">判断Class对象对应的类之间的关系</h2>
+
+<p>使用<code>class1.isAssignableFrom(class2)</code>，判断class1表示类或接口是否和class2表示的相同或者是其超类或者超接口，返回true、false。基本类型没有超类或超接口，也就是说当class2为基本类型的class对象时，只有class1为也为class2时，才返回true。</p>
+
+<pre><code class="language-java">  System.out.println(&quot;&quot; + int.class.isAssignableFrom(int.class));
+  System.out.println(&quot;&quot; + Object.class.isAssignableFrom(int.class));
+  System.out.println(&quot;&quot; + Object.class.isAssignableFrom(String.class));
+  System.out.println(&quot;&quot; + Object.class.isAssignableFrom(char.class));
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/>https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/java/">
+                    #java</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/" class="prev" rel="prev" title="Git命令 Submodule"><i class="iconfont icon-left"></i>&nbsp;Git命令 Submodule</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="next" rel="next" title="Java8 Stream常用操作">Java8 Stream常用操作&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

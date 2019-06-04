@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on 每天进步一点点</title>
+    <title>hugo on 每天进步一点点</title>
     <link>https://falconkaze.github.io/categories/hugo/</link>
-    <description>Recent content in Hugo on 每天进步一点点</description>
+    <description>Recent content in hugo on 每天进步一点点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 11 Nov 2018 19:19:36 +0800</lastBuildDate>
@@ -13,10 +13,10 @@
     
     <item>
       <title>Hugo配置文件详解</title>
-      <link>https://falconkaze.github.io/article/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
+      <link>https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Sun, 11 Nov 2018 19:19:36 +0800</pubDate>
       
-      <guid>https://falconkaze.github.io/article/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
+      <guid>https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
       <description> 参考文章：
  Configurate Hugo  hugo默认会在网站根目录下查找配置文件，依次会使用config.toml,config.yaml,config.json。也可以使用下面命令来指定配置文件。
 hugo --config debugconfig.toml hugo --config a.toml,b.toml,c.toml  查看配置 hugo config # 查看当前配置  基本配置 下面的所有的属性由config-name(default-value)组成。
@@ -25,10 +25,10 @@ baseUrl(&amp;quot;http://example.org&amp;quot;) 网站主页url defaultContentLa
     
     <item>
       <title>Hugo搭建个人博客</title>
-      <link>https://falconkaze.github.io/article/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Sun, 11 Nov 2018 18:51:02 +0800</pubDate>
       
-      <guid>https://falconkaze.github.io/article/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description>参考文章：
  hugo quick start 零基础使用Hugo和GitHub Pages创建自己的博客  安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：
 my-site/ ├── archetypes content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。 ├── config.toml 网站配置文件 ├── content 网站内容，全部使用markdown格式 ├── data ├── layouts 包含网站的模板，决定内容的显示方式 ├── resources ├── static 包含css，js，fonts，media，决定网站的外观 └── themes 主题，默认主题从这里选取  添加主题 hugo 主题仓库

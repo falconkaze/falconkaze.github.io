@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/categories/linux/</link>
+    <description>Recent content in linux on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Jun 2019 19:09:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Archlinux降级软件包</title>
+      <link>https://falconkaze.github.io/posts/linux/archlinux%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
+      <pubDate>Tue, 04 Jun 2019 19:09:27 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/archlinux%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
+      <description>参考
+ 如何在Archlinux中降级软件包  语法:
+sudo downgrade [PACKAGE, ...] [-- [PACMAN OPTIONS]]  假设要降级tmux，运行
+sudo downgrade tmux  运行结果(会列出本地缓存和远程镜像中所有可用的包)：
+- 1) tmux 2.8 1 x86_64 (remote) - 2) tmux 2.8 1 x86_64 (local) - 3) tmux 2.9 1 x86_64 (remote) - 4) tmux 2.9 1 x86_64 (local)  然后输入需要的包号码，回车后就会开始安装</description>
+    </item>
+    
+  </channel>
+</rss>

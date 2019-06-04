@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mybatis on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/categories/mybatis/</link>
+    <description>Recent content in mybatis on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Mar 2019 20:17:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/categories/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TypeHandler自定义类型转换</title>
+      <link>https://falconkaze.github.io/posts/java/mybatis/typehandler%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Wed, 27 Mar 2019 20:17:45 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/mybatis/typehandler%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>mybatis之TypeHandler 泛型TypeHandler  在应用开发中，经常遇到数据表数据和我们需要的数据不对应的情况(类型or值)，有时候是因为数据库字段的限制，比如数据库不支持List，有时候是因为存储方面的考虑，比如“男”“女”经常保存为0和1。按照通常的做法，需要在插入和读取的时候手动进行转换。而mybatis为我们提供了一种通用的接口，只要自己实现相应的转换逻辑，然后指定对应的java类型和数据库字段类型就可以了。另外mybatis已经提供了几种默认TypeHandler，涵盖了常见的转换操作。</description>
+    </item>
+    
+  </channel>
+</rss>

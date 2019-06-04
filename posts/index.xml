@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/posts/</link>
+    <description>Recent content in Posts on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Jun 2019 19:09:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Archlinux降级软件包</title>
+      <link>https://falconkaze.github.io/posts/linux/archlinux%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
+      <pubDate>Tue, 04 Jun 2019 19:09:27 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/archlinux%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
+      <description>参考
+ 如何在Archlinux中降级软件包  语法:
+sudo downgrade [PACKAGE, ...] [-- [PACMAN OPTIONS]]  假设要降级tmux，运行
+sudo downgrade tmux  运行结果(会列出本地缓存和远程镜像中所有可用的包)：
+- 1) tmux 2.8 1 x86_64 (remote) - 2) tmux 2.8 1 x86_64 (local) - 3) tmux 2.9 1 x86_64 (remote) - 4) tmux 2.9 1 x86_64 (local)  然后输入需要的包号码，回车后就会开始安装</description>
+    </item>
+    
+    <item>
+      <title>H2自定义sql函数</title>
+      <link>https://falconkaze.github.io/posts/java/h2/h2%E8%87%AA%E5%AE%9A%E4%B9%89sql%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 03 Jun 2019 10:10:36 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/h2/h2%E8%87%AA%E5%AE%9A%E4%B9%89sql%E5%87%BD%E6%95%B0/</guid>
+      <description>在为服务写测试用例的时候，为了不依赖外部数据库，通常会选用h2这个内存数据库。但是h2并不完全兼容mysql的语法，即使指定了mode=MYSQL也如此。mysql中的一些函数也没有在h2中定义，这里介绍一下如何在h2中模拟mysql的函数。
+模拟函数 h2支持一种语法create alias，用来将java的static方法映射为sql别名(函数)。具体的实现流程如下，假设我们模拟UNIX_TIMESTAMP这个函数。UNIX_TIMESTAMP有无参和有参几种形式，经测试，可以通过java方法重载来模拟，下面只介绍参数为Timestamp的情况。
+ 首先创建一个方法来模拟UNIX_TIMESTAMP的逻辑。  package com.falconkaze.example.h2; import java.sql.Timestamp; public class FunctionUtil{ public static long unixTimestamp(Timestamp timestamp){ return timestamp.getTime() / 1000; } }   定义别名  通过flyway或者schema等手段在服务初始化的时候执行下面sql。
+CREATE ALIAS UNIX_TIMESTAMP FOR &amp;quot;com.falconkaze.example.h2.FunctionUtil.unixTimestamp&amp;quot;;  替换h2中已有的函数 h2中有些函数与mysql中函数名相同，但是具体传参或作用不同，这时候我们可以将h2中的函数删除，然后用上面的方法自定义函数。具体过程如下，假设要删除的方法为DATE_DIFF。
+ 创建一个删除函数的方法。  package com.falconkaze.example.h2; import java.lang.reflect.Field; import java.util.Map; import org.h2.expression.Function; public class FunctionUtil{ public static int removeFunction(String name){ try { Field field = Function.class.getDeclareField(&amp;quot;FUNCTIONS&amp;quot;); field.setAccessible(true); ((Map)field.get(null).remove(name.toUpperCase())); }catch(Exception e){ // do something.</description>
+    </item>
+    
+    <item>
+      <title>单例模式</title>
+      <link>https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 02 Jun 2019 15:06:29 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>参考:
+ 双重检查锁问题 JAVA设计模式之单例模式  对于一些类来说，只有一个实例是非常重要的。比如计算机系统可以安装多个窗口管理器，但是同一时间只能使用一个；火车售票处可以有多个窗口同时出售车票，但是票源都是来自同一个地方。
+单例模式的作用就是保证一个类只有一个实例，并提供一个访问它的全局访问点。选择单例模式通常是为了避免不一致状态。除了避免不一致之外，还有一种情况可以使用单例模式：当类的对象是无状态的，或者它的状态事实不可变时，这时候创建多个对象的作用与一个对象没有什么区别，可以用单例模式避免对象的重复创建。比如在Spring mvc程序中，Controller，Service，Dao通常都是单例。
+单例模式有以下特点：
+ 单例类只能有一个实例。
+ 单例类必须有一个接口来给其他外部提供这一实例。
+ 通常单例类来创建自己的唯一实例。
+  单例模式的实现方法有好几种：懒汉式单例、饿汉式单例、登记式单例。
+懒汉式单例 懒汉式单例的特点是在需要时才创建实例，可以避免或延迟对象创建的开销和内存的消耗。
+ 线程不安全的实现  public class Singleton{ private Singleton{} private static Singleton single = null; public static Singleton getInstance(){ if (single == null){ single = new Singleton(); } return single; } }  这里将构造方法设为private，将对象的创建权独占在本类中（实际上，通过java反射机制可以实例化构造方法为private的类的），从而保证单例的实现。因为上面例子中存在先检查后执行的逻辑，并且没有进行同步，所以在多线程中可能会有问题。下面介绍几种多线程下的懒汉单例实现。
+ 在getInstance方法上加同步锁  public static synchronized Singleton getInstance(){ if (single == null){ single = new Singleton(); } return single; }  这个方法可以保证线程安全，但是单例模式只需要在对象创建的时候进行同步，对象创建后就没必要进行同步了，所以这种方法不必要的性能损耗。</description>
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://falconkaze.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 01 Jun 2019 21:30:50 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description> 设计模式分类 设计模式分为三大类：
+ 创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。 结构型模式，共七种：适配器模式、装饰者模式、代理模式、外观模式、桥接模式、组合模式、享元模式。 行为型模式，共11种：策略模式、模板方法模式、观察者模式、迭代器模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。  </description>
+    </item>
+    
+    <item>
+      <title>Spring获取bean的几种方法</title>
+      <link>https://falconkaze.github.io/posts/java/spring/spring%E8%8E%B7%E5%8F%96bean%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 09 May 2019 19:35:21 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/spring/spring%E8%8E%B7%E5%8F%96bean%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>参考
+ spring获取bean的几种方法  </description>
+    </item>
+    
+    <item>
+      <title>Static变量注入bean</title>
+      <link>https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/</link>
+      <pubDate>Thu, 09 May 2019 17:57:22 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/</guid>
+      <description>在springframework中，不能将bean注入到static域中。比如下面的代码，虽然启动不会抛异常，但是使用时会抛NullPointerException。
+@Autowired private static DemoBean demoBean;  之所以这样，是因为static变量属于类的特性，在类加载的时候就要进行赋值，但是类的加载是JVM做的，Spring无法在类加载的时候将bean注入进去。所以spring是基于对象层面的依赖注入。
+但是实际工作中有时候确实需要将bean赋值给static变量，这时候就需要进行特殊处理。有下面几种方法：
+ 将类注册为Bean，通过成员方法注入  public class Test{ private static DemoBean demoBean; @Autowired public void setDemoBean(DemoBean demoBean){ Test.demoBean = demoBean; } }   将类注册为Bean，通过@PostConstruct在Bean初始化时注册。  public class Test{ private static DemoBean demoBean; @Autowired private DemoBean tmpDemoBean; @PostContrust public void init(){ Test.demoBean = tmpDemoBean; } }   自己获取Bean，然后将赋值给static变量。参考spring获取bean的几种方法  本文介绍了几种将Bean注入给static变量的方法，但是如果没有特殊的需求，要尽量避免将Bean注入给static变量，这与spring的初衷冲突。</description>
+    </item>
+    
+    <item>
+      <title>Archlinux选择镜像源</title>
+      <link>https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <pubDate>Tue, 30 Apr 2019 16:45:05 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <description> 参考：
+ arch-wiki Mirrors arch-wiki reflector  手动生成镜像源 # 选择中国的https协议的完全同步的镜像源，按下载速度排序后覆盖到mirrorlist. /usr/bin/reflector --country China -p http --latest 20 -p https --sort rate &amp;gt;&amp;gt; /etc/pacman.d/mirrorlist  定时同步镜像源 /etc/cron.weekly/mirrorlist -------------------------------- #! /bin/bash /usr/bin/reflector --country China -p http --latest 20 -p https --sort rate &amp;gt;&amp;gt; /etc/pacman.d/mirrorlist  </description>
+    </item>
+    
+    <item>
+      <title>创建命令别名——Alias</title>
+      <link>https://falconkaze.github.io/posts/linux/alias/</link>
+      <pubDate>Tue, 23 Apr 2019 11:20:07 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/alias/</guid>
+      <description>参考:
+ 一些alias配置 shell中使用alias  alias 是shell的内置命令，可以为命令设置一个别名，可以简化命令输入，提高效率。
+命令使用 别名的第一个字符可以是除元字符外的任何可打印字符，其余字符必须与对于有效文件名的要求相同。
+ 创建别名  # 删除文件前提示 alias rm=&amp;quot;/usr/bin/rm -i&amp;quot;   查看所有别名  alias  有时候我们需要使用原来的命令，而不是别名代指的命令。这时候可以在命令前加上反斜杠。
+alias cat=echo cat test.txt \cat test.txt  alias别名只在当前shell中有效，不能被继承，不能被export。
+常用别名 指定命令默认选项 alias ping=&amp;quot;ping -c 3&amp;quot; alias l=&#39;ls -CF --color=auto&#39; alias ls=&#39;ls --color=auto&#39; alias ll=&#39;ls -AlF --color=auto&#39; alias la=&#39;ls -A --color=auto&#39; alias dir=&#39;dir --color=auto&#39; alias vdir=&#39;vdir --color=auto&#39; alias grep=&#39;grep --color=auto&#39; alias fgrep=&#39;fgrep --color=auto&#39; alias egrep=&#39;egrep --color=auto&#39;  组合命令 # 查看ip地址 alias mip=&#39;ifconfig enp1s0 | grep &amp;quot;inet &amp;quot; | awk &#39;\&#39;&#39;{print $2 }&#39;\&#39;&#39;&#39; # 输出当前毫秒级时间戳 alias timestamp=&#39;nanotime=`date +%s%N`;echo ${nanotime:0:13}&#39; # 将秒级时间戳转为指定格式时间 alias time2date=&#39;fun() { date -d @${1} &amp;quot;+%Y-%m-%d %H:%M:%S&amp;quot;;};fun&#39; alias db=mysql -uroot -proot_pass alias dbcli=mycli -uroot -proot_pass alias reload=&#39;source ~/.</description>
+    </item>
+    
+    <item>
+      <title>Openconnect使用</title>
+      <link>https://falconkaze.github.io/posts/linux/openconnect%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 08 Apr 2019 20:20:48 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/openconnect%E4%BD%BF%E7%94%A8/</guid>
+      <description> archlinux wiki archlinux bug  </description>
+    </item>
+    
+    <item>
+      <title>Unit Dbus Org.freedesktop.resolve1.service not found</title>
+      <link>https://falconkaze.github.io/posts/linux/unit-dbus-org.freedesktop.resolve1.service-not-found/</link>
+      <pubDate>Mon, 08 Apr 2019 20:16:46 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/unit-dbus-org.freedesktop.resolve1.service-not-found/</guid>
+      <description> Archlinux bugs  解决方案:
+systemctl enable systemd-resolved.service  </description>
+    </item>
+    
+    <item>
+      <title>TypeHandler自定义类型转换</title>
+      <link>https://falconkaze.github.io/posts/java/mybatis/typehandler%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Wed, 27 Mar 2019 20:17:45 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/mybatis/typehandler%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <description>mybatis之TypeHandler 泛型TypeHandler  在应用开发中，经常遇到数据表数据和我们需要的数据不对应的情况(类型or值)，有时候是因为数据库字段的限制，比如数据库不支持List，有时候是因为存储方面的考虑，比如“男”“女”经常保存为0和1。按照通常的做法，需要在插入和读取的时候手动进行转换。而mybatis为我们提供了一种通用的接口，只要自己实现相应的转换逻辑，然后指定对应的java类型和数据库字段类型就可以了。另外mybatis已经提供了几种默认TypeHandler，涵盖了常见的转换操作。</description>
+    </item>
+    
+    <item>
+      <title>Launchd使用</title>
+      <link>https://falconkaze.github.io/posts/mac/launchd%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 21 Mar 2019 21:13:40 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/mac/launchd%E4%BD%BF%E7%94%A8/</guid>
+      <description>mac下使用launchctl  launchd是mac上自带的一个执行任务的服务</description>
+    </item>
+    
+    <item>
+      <title>Java8 Stream常用操作</title>
+      <link>https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 06 Mar 2019 18:31:24 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>所有的流操作都有一种共同的结构，具有一个流来源，0或多个中间操作，一个终止操作。
+创建流    方法 描述     myCollection.stream()    Stream.of(T&amp;hellip;)    Stream.of(T)    Stream.empty()    Stream.iterate(T, UnaryOperator)    Stream.generate(Supplier)    IntStream.range(lower,upper)    myBufferedReader.lines()    myBitSet.Stream()    myString.chars()     中间操作 中间操作负责处理流中的每个元素。
+ flatMap  Stream&amp;lt;R&amp;gt; flatMap(Function&amp;lt;T, Stream&amp;lt;R&amp;gt;)将源流中的每个元素转为新的流，然后将这些流中的元素合并为一个新的流。
+List&amp;lt;String&amp;gt; array1 = Arrays.asList(&amp;quot;test-101&amp;quot;,&amp;quot;test-102&amp;quot;); List&amp;lt;String&amp;gt; array2 = Arrays.asList(&amp;quot;test-201&amp;quot;,&amp;quot;test-202&amp;quot;); List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; lists = Arrays.</description>
+    </item>
+    
+    <item>
+      <title>Java对象关系判断</title>
+      <link>https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/</link>
+      <pubDate>Tue, 05 Mar 2019 10:01:05 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/</guid>
+      <description> 判断对象是不是类的实例 使用instanceof。一个类的对象也是它超类或超接口的实例，通常在类型强转前需要instanceof判断，避免抛出异常。
+Object value = new Integer; if(value instanceof CharSequence){ System.out.println(&amp;quot;value is not a instance of CharSequence&amp;quot;); }  判断Class对象对应的类之间的关系 使用class1.isAssignableFrom(class2)，判断class1表示类或接口是否和class2表示的相同或者是其超类或者超接口，返回true、false。基本类型没有超类或超接口，也就是说当class2为基本类型的class对象时，只有class1为也为class2时，才返回true。
+System.out.println(&amp;quot;&amp;quot; + int.class.isAssignableFrom(int.class)); System.out.println(&amp;quot;&amp;quot; + Object.class.isAssignableFrom(int.class)); System.out.println(&amp;quot;&amp;quot; + Object.class.isAssignableFrom(String.class)); System.out.println(&amp;quot;&amp;quot; + Object.class.isAssignableFrom(char.class));  </description>
+    </item>
+    
+    <item>
+      <title>Git命令 Submodule</title>
+      <link>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/</link>
+      <pubDate>Sat, 23 Feb 2019 14:55:28 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/</guid>
+      <description>参考文档
+ Git 工具 - 子模块  有时候，我们工作中的项目需要包含并使用另一个项目。我们想把它们作为两个独立的项目，同时又想在一个项目中使用另一个。这时候就需要用到submodule命令了。例如：用hugo搭建博客的时候需要用到其他人开发的模板。
+将一个git仓库作为当前仓库的子模块
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git ananke  git submodule add命令会在仓库主目录创建一个.gitmodule文件，这个文件配置了子模块项目url与本地目录之间的映射。这个文件也受版本管理，这样其他人克隆项目的时候也可以很方便地获取到子模块。
+git会把子模块目录作为一个特殊的提交，所以提交的时候可以看到这个文件夹，但是不会跟踪它的内容。
+git clone仓库后，并不会clone子模块，需要使用下面这两个命令。
+git submodule init # clone仓库后，初始化本地配置文件 git submodule update # 抓取子模块的提交  也可以为git clone指定--recursive选项，这样可以自动初始化并更新仓库的每一个子模块。
+git clone --recursive https://github.com/chaconinc/MainProject  如果需要更新子模块中的代码，可以进入子模块目录使用fetch或pull进行更新，也可以使用下面的命令
+git submodule update --remote themes/gohugo-theme-ananke  </description>
+    </item>
+    
+    <item>
+      <title>Git命令 remote</title>
+      <link>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/</link>
+      <pubDate>Sat, 23 Feb 2019 14:10:31 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/</guid>
+      <description>git remote #查看当前配置有哪些远程仓库，一般只会配一个origin仓库 git remote -v # 在上面命令的基础上显示远程仓库对应的克隆地址 git remote add origin git://github.com/falconkaze/read-note.git # 添加远程分支，用于为本地已有的仓库添加一个远程仓库 git remote rename old_name new_name # 对远程仓库（在本地的简称）重命名，也会使仓库下对应的分支名称发生变化 git remote rm name # 移除对应的远程仓库，并不是删除  </description>
+    </item>
+    
+    <item>
+      <title>正则表达式</title>
+      <link>https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Mon, 18 Feb 2019 22:32:06 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>正则表达式就是一种描述字符串的语言。
+在java中用\\来表示转义，\\\\表示普通的反斜杠；而在其他语言中，用\表示转义符，\\表示普通的反斜杠。下面都用\来表示转义。
+字符 B 指定字符B \xhh 十六进制值为0xhh的字符 \uhhhh 十六进制表示为0xhhhh的Unicode字符 \t 制表符 \n 换行符 \r 回车 \f 换页 \e 转义（Escape）  字符类 . 任意字符 [abc] a或b或c，和 a|b|c作用相同 [^abc] 除了a，b，c之外的任一字符 [a-zA-Z] 从a到z或从A-Z的任一字符 [abc[hij]] abchij六个字符中任意一个，和a|b|c|h|i|j作用相同（合并） [a-z&amp;amp;&amp;amp;[hij]] hij三个字符中任意一个（前后取交集） \s 空白符（空格，tab，换行，换页和回车） \S 非空白符，等同于 [^\s] \d 任一阿拉伯数字，等同于[0-9] \D 非阿拉伯数据，等同于[^0-9] \w 词字符，等同于[a-zA-Z0-9] \W 非词字符，等同于[^\w]  逻辑操作符 XY 匹配XY这个整体 X|Y X或者Y (X) 捕获组（capturing group），可以在表达式中中\i引用第i个捕获组  组是用括号划分的正则表达式，可以根据组的编号来引用某个组。组号为0表示整个表达式，组号1标识第一对括号括起的组，以此类推。
+边界匹配符 ^ 一行的起始 $ 一行的结束 \b 词的边界 \B 非词的边界 \G 前一个匹配的结束  量词 量词描述了一个pattern匹配输入文本的方式：</description>
+    </item>
+    
+    <item>
+      <title>Linux常用工具</title>
+      <link>https://falconkaze.github.io/posts/linux/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Mon, 18 Feb 2019 21:35:44 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</guid>
+      <description> 日常使用  pass 基于cli的密码管理工具  网络类  wireshark 图形化抓包工具，可以帮助解析报文
+ tcpdump 命令行抓包工具
+ ping 测试网络工具
+  系统管理  systemd systemctl  文本处理工具  grep 文本检索
+ sed 文本检索，替换，删除
+ awk 文本检索，分割，格式化等等
+ tr 字符替换
+ wc 文本统计（行数，字符数）
+  其他  cheat 查看命令的实例。
+ man 查看命令的描述，语法和可用的选项
+  </description>
+    </item>
+    
+    <item>
+      <title>git branch命令</title>
+      <link>https://falconkaze.github.io/posts/git/branch%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 15 Feb 2019 10:45:42 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/branch%E5%91%BD%E4%BB%A4/</guid>
+      <description> 常用命令 git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt; # 重命名指定分支 git branch -m &amp;lt;newname&amp;gt; # 重命名当前分支  </description>
+    </item>
+    
+    <item>
+      <title>commit命令</title>
+      <link>https://falconkaze.github.io/posts/git/commit%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 14 Feb 2019 20:08:18 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/commit%E5%91%BD%E4%BB%A4/</guid>
+      <description> 常用命令 git commit --no-verify -m &amp;quot;修改...&amp;quot; # git commit跳过检查  </description>
+    </item>
+    
+    <item>
+      <title>pkill和pgrep使用</title>
+      <link>https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 14 Feb 2019 19:41:50 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/</guid>
+      <description> pgrep和pkill是用来基于名字或其他参数来检索进程或者给进程发送系统信号的。
+语法：
+pgrep [options] pattern pkill [options] pattern  通常用法 pgrep pgrep -u root sshd # 指定用户拥有的进程名匹配sshd的进程的PID pgrep -u root,docker # 指定多个用户（or）  pkill pkill -t pts/12 # 关闭指定的终端（用来强制踢人）  可以使用who，w来查看当前的所有用户。
+命令参数 </description>
+    </item>
+    
+    <item>
+      <title>Shell下进制转换</title>
+      <link>https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Mon, 11 Feb 2019 21:41:43 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</guid>
+      <description> shell脚本的数值默认按10进制处理。以0开头的数字为8进制，以0x开头的数字为16进制。使用BASE#NUMBER这种形式可以表示其他进制（2-64）。
+其他进制转10进制 ((num=012)) ((num=0x12)) ((num=16#FF)) echo $num echo $((012)) echo $((16#FF)) let num=012 let num=16#12 echo $num printf &amp;quot;%d\n&amp;quot; 0xf printf &amp;quot;%d\n&amp;quot; 011  shell中的”=“没有值类型，默认会将后面的值变成字符串。而(())中可以进行数值运算
+十进制转其他进制 printf &amp;quot;%x\n&amp;quot; 15 echo &amp;quot;obase=进制;值&amp;quot; | bc echo &amp;quot;obase=64;12&amp;quot; | bc  </description>
+    </item>
+    
+    <item>
+      <title>Hugo配置文件详解</title>
+      <link>https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Sun, 11 Nov 2018 19:19:36 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
+      <description> 参考文章：
+ Configurate Hugo  hugo默认会在网站根目录下查找配置文件，依次会使用config.toml,config.yaml,config.json。也可以使用下面命令来指定配置文件。
+hugo --config debugconfig.toml hugo --config a.toml,b.toml,c.toml  查看配置 hugo config # 查看当前配置  基本配置 下面的所有的属性由config-name(default-value)组成。
+baseUrl(&amp;quot;http://example.org&amp;quot;) 网站主页url defaultContentLanguage(&amp;quot;en&amp;quot;) paginate(10) 分页中每页的默认数量 metaDataFormat(&amp;quot;toml&amp;quot;) 前面的元数据格式。有效值，toml，yaml，json theme(&amp;quot;&amp;quot;) 指定主题 title(&amp;quot;&amp;quot;) 网站名字 watch(false) 是否启动热部署。 newContentEditor(&amp;quot;&amp;quot;) 创建新内容时的默认编辑器 noChmod(false) 是否同步文件的权限 noTimes(false) 是否同步文件的修改时间 pygmentsCodeFencesGuessSyntax(false) 在代码没有指定语言的时候，启用语法猜测。 pygmentsStyle(&amp;quot;monokai&amp;quot;) 语法高亮的颜色主题。[可用语法主题](https://help.farbox.com/pygments.html) pygmentsUseClasses(false) 使用外部css来实现语法高亮 summaryLength(70) timeout(10000) 生成页面的超时时间，默认10s。这个设置主要是为了避免递归页面 buildDrafts(false) 是否显示标注为draft的content buildExpired(false) 是否显示过期的内容 buildFuture(false) 是否显示未来发布的内容 archetypeDir(&amp;quot;archtypes&amp;quot;) assetDir(&amp;quot;assets&amp;quot;) contentDir(&amp;quot;content&amp;quot;) dataDir(&amp;quot;data&amp;quot;) publicDir(&amp;quot;public&amp;quot;) themesDir(&amp;quot;themes&amp;quot;) blackfriday canonifyURLs(false) 是否将相对url转为绝对 defaultContentLanguageInSubdir(false) 在子文件夹中渲染默认语言，例如：content/en/。网站的根目录将重定向到/en/  使用环境变量来配置 </description>
+    </item>
+    
+    <item>
+      <title>Hugo搭建个人博客</title>
+      <link>https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sun, 11 Nov 2018 18:51:02 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>参考文章：
+ hugo quick start 零基础使用Hugo和GitHub Pages创建自己的博客  安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：
+my-site/ ├── archetypes content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。 ├── config.toml 网站配置文件 ├── content 网站内容，全部使用markdown格式 ├── data ├── layouts 包含网站的模板，决定内容的显示方式 ├── resources ├── static 包含css，js，fonts，media，决定网站的外观 └── themes 主题，默认主题从这里选取  添加主题 hugo 主题仓库
+cd my-site # 安装所有主题 git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes # 安装某一个主题 cd themes git clone URL_TO_THEME # 在配置文件中指定所要使用的主题 echo &#39;theme = &amp;quot;theme-name&amp;quot;&#39; &amp;gt;&amp;gt; config.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/git/</link>
+    <description>Recent content in git on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Feb 2019 14:55:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git命令 Submodule</title>
+      <link>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/</link>
+      <pubDate>Sat, 23 Feb 2019 14:55:28 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/</guid>
+      <description>参考文档
+ Git 工具 - 子模块  有时候，我们工作中的项目需要包含并使用另一个项目。我们想把它们作为两个独立的项目，同时又想在一个项目中使用另一个。这时候就需要用到submodule命令了。例如：用hugo搭建博客的时候需要用到其他人开发的模板。
+将一个git仓库作为当前仓库的子模块
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git ananke  git submodule add命令会在仓库主目录创建一个.gitmodule文件，这个文件配置了子模块项目url与本地目录之间的映射。这个文件也受版本管理，这样其他人克隆项目的时候也可以很方便地获取到子模块。
+git会把子模块目录作为一个特殊的提交，所以提交的时候可以看到这个文件夹，但是不会跟踪它的内容。
+git clone仓库后，并不会clone子模块，需要使用下面这两个命令。
+git submodule init # clone仓库后，初始化本地配置文件 git submodule update # 抓取子模块的提交  也可以为git clone指定--recursive选项，这样可以自动初始化并更新仓库的每一个子模块。
+git clone --recursive https://github.com/chaconinc/MainProject  如果需要更新子模块中的代码，可以进入子模块目录使用fetch或pull进行更新，也可以使用下面的命令
+git submodule update --remote themes/gohugo-theme-ananke  </description>
+    </item>
+    
+    <item>
+      <title>Git命令 remote</title>
+      <link>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/</link>
+      <pubDate>Sat, 23 Feb 2019 14:10:31 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/</guid>
+      <description>git remote #查看当前配置有哪些远程仓库，一般只会配一个origin仓库 git remote -v # 在上面命令的基础上显示远程仓库对应的克隆地址 git remote add origin git://github.com/falconkaze/read-note.git # 添加远程分支，用于为本地已有的仓库添加一个远程仓库 git remote rename old_name new_name # 对远程仓库（在本地的简称）重命名，也会使仓库下对应的分支名称发生变化 git remote rm name # 移除对应的远程仓库，并不是删除  </description>
+    </item>
+    
+    <item>
+      <title>git branch命令</title>
+      <link>https://falconkaze.github.io/posts/git/branch%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 15 Feb 2019 10:45:42 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/branch%E5%91%BD%E4%BB%A4/</guid>
+      <description> 常用命令 git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt; # 重命名指定分支 git branch -m &amp;lt;newname&amp;gt; # 重命名当前分支  </description>
+    </item>
+    
+    <item>
+      <title>commit命令</title>
+      <link>https://falconkaze.github.io/posts/git/commit%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 14 Feb 2019 20:08:18 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/git/commit%E5%91%BD%E4%BB%A4/</guid>
+      <description> 常用命令 git commit --no-verify -m &amp;quot;修改...&amp;quot; # git commit跳过检查  </description>
+    </item>
+    
+  </channel>
+</rss>

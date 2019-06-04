@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/linux/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           正则表达式 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="正则表达式 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "正则表达式",
+    "headline" : "正则表达式",
+    "description" : "正则表达式就是一种描述字符串的语言。\n在java中用\\\\来表示转义，\\\\\\\\表示普通的反斜杠；而在其他语言中，用\\表示转义符，\\\\表示普通的反斜杠。下面都用\\来表示转义。\n字符 B 指定字符B \\xhh 十六进制值为0xhh的字符 \\uhhhh 十六进制表示为0xhhhh的Unicode字符 \\t 制表符 \\n 换行符 \\r 回车 \\f 换页 \\e 转义（Escape）  字符类 . 任意字符 [abc] a或b或c，和 a|b|c作用相同 [^abc] 除了a，b，c之外的任一字符 [a-zA-Z] 从a到z或从A-Z的任一字符 [abc[hij]] abchij六个字符中任意一个，和a|b|c|h|i|j作用相同（合并） [a-z\x26amp;\x26amp;[hij]] hij三个字符中任意一个（前后取交集） \\s 空白符（空格，tab，换行，换页和回车） \\S 非空白符，等同于 [^\\s] \\d 任一阿拉伯数字，等同于[0-9] \\D 非阿拉伯数据，等同于[^0-9] \\w 词字符，等同于[a-zA-Z0-9] \\W 非词字符，等同于[^\\w]  逻辑操作符 XY 匹配XY这个整体 X|Y X或者Y (X) 捕获组（capturing group），可以在表达式中中\\i引用第i个捕获组  组是用括号划分的正则表达式，可以根据组的编号来引用某个组。组号为0表示整个表达式，组号1标识第一对括号括起的组，以此类推。\n边界匹配符 ^ 一行的起始 $ 一行的结束 \\b 词的边界 \\B 非词的边界 \\G 前一个匹配的结束  量词 量词描述了一个pattern匹配输入文本的方式：",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-02-18 22:32:06 \x2b0800 CST",
+    "dateModified" : "2019-02-18 22:32:06 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F\/",
+    "wordCount" : "95",
+    "keywords" : [ "regex", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">正则表达式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-02-18 itemprop="datePublished">February 18, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/regex/"> regex </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>正则表达式就是一种描述字符串的语言。</p>
+
+<p>在java中用<code>\\</code>来表示转义，<code>\\\\</code>表示普通的反斜杠；而在其他语言中，用<code>\</code>表示转义符，<code>\\</code>表示普通的反斜杠。下面都用<code>\</code>来表示转义。</p>
+
+<h2 id="字符">字符</h2>
+
+<pre><code class="language-regex">B       指定字符B
+\xhh    十六进制值为0xhh的字符
+\uhhhh  十六进制表示为0xhhhh的Unicode字符
+\t      制表符
+\n      换行符
+\r      回车
+\f      换页
+\e      转义（Escape）
+</code></pre>
+
+<h2 id="字符类">字符类</h2>
+
+<pre><code class="language-regex">.            任意字符
+[abc]        a或b或c，和      a|b|c作用相同
+[^abc]       除了a，b，c之外的任一字符
+[a-zA-Z]     从a到z或从A-Z的任一字符
+[abc[hij]]   abchij六个字符中任意一个，和a|b|c|h|i|j作用相同（合并）
+[a-z&amp;&amp;[hij]] hij三个字符中任意一个（前后取交集）
+\s           空白符（空格，tab，换行，换页和回车）
+\S           非空白符，等同于 [^\s]
+\d           任一阿拉伯数字，等同于[0-9]
+\D           非阿拉伯数据，等同于[^0-9]
+\w           词字符，等同于[a-zA-Z0-9]
+\W           非词字符，等同于[^\w]
+</code></pre>
+
+<h2 id="逻辑操作符">逻辑操作符</h2>
+
+<pre><code class="language-regex">XY  匹配XY这个整体
+X|Y X或者Y
+(X) 捕获组（capturing group），可以在表达式中中\i引用第i个捕获组
+</code></pre>
+
+<p>组是用括号划分的正则表达式，可以根据组的编号来引用某个组。组号为0表示整个表达式，组号1标识第一对括号括起的组，以此类推。</p>
+
+<h2 id="边界匹配符">边界匹配符</h2>
+
+<pre><code class="language-regex">^ 一行的起始
+$ 一行的结束
+\b 词的边界
+\B 非词的边界
+\G 前一个匹配的结束
+</code></pre>
+
+<h2 id="量词">量词</h2>
+
+<p>量词描述了一个pattern匹配输入文本的方式：</p>
+
+<ul>
+<li><p>贪婪型，默认模式。贪婪表达式会为所有可能的模式发现尽可能多的匹配。</p></li>
+
+<li><p>勉强型，用问号来指定。匹配满足pattern的最少字符数</p></li>
+
+<li><p>占有型，目前这种类型的量词只能在java中使用。当正则表达式被应用于字符串时，它会产生尽可能多的状态，以便在匹配失败时可以回溯。而“占有型”量词不会保存这些中间状态，因此它们可以防止回溯。它们常常被用于防止正则表达式失控，可以使正则表达式执行起来更有效。</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>贪婪型</th>
+<th>勉强型</th>
+<th>占有型</th>
+<th>匹配规则</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>X?</code></td>
+<td><code>X??</code></td>
+<td><code>X?+</code></td>
+<td>一个或零个X</td>
+</tr>
+
+<tr>
+<td><code>X*</code></td>
+<td><code>X*?</code></td>
+<td><code>X*+</code></td>
+<td>零个或多个X</td>
+</tr>
+
+<tr>
+<td><code>X{n}</code></td>
+<td><code>X{n}?</code></td>
+<td><code>X{n}+</code></td>
+<td>恰好n个X</td>
+</tr>
+
+<tr>
+<td><code>X{n,}</code></td>
+<td><code>X{n,}?</code></td>
+<td><code>X{n}+</code></td>
+<td>至少n个X</td>
+</tr>
+
+<tr>
+<td><code>X{n,m}</code></td>
+<td><code>X{n,m}?</code></td>
+<td><code>X{n,m}+</code></td>
+<td>X至少n次，不超过m次</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/>https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/regex/">
+                    #regex</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/linux/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="Linux常用工具"><i class="iconfont icon-left"></i>&nbsp;Linux常用工具</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/" class="next" rel="next" title="Git命令 remote">Git命令 remote&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="next" href="https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Hugo搭建个人博客 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Hugo搭建个人博客 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Hugo搭建个人博客",
+    "headline" : "Hugo搭建个人博客",
+    "description" : "参考文章：\n hugo quick start 零基础使用Hugo和GitHub Pages创建自己的博客  安装hugo pacman -S hugo hugo version  创建网站 hugo new site my-site  这条命令会创建一个my-site文件夹，目录结构如下：\nmy-site\/ ├── archetypes content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。 ├── config.toml 网站配置文件 ├── content 网站内容，全部使用markdown格式 ├── data ├── layouts 包含网站的模板，决定内容的显示方式 ├── resources ├── static 包含css，js，fonts，media，决定网站的外观 └── themes 主题，默认主题从这里选取  添加主题 hugo 主题仓库\ncd my-site # 安装所有主题 git clone --depth 1 --recursive https:\/\/github.com\/gohugoio\/hugoThemes.git themes # 安装某一个主题 cd themes git clone URL_TO_THEME # 在配置文件中指定所要使用的主题 echo \x27theme = \x26quot;theme-name\x26quot;\x27 \x26gt;\x26gt; config.",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-11-11 18:51:02 \x2b0800 CST",
+    "dateModified" : "2018-11-11 18:51:02 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/hugo\/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/",
+    "wordCount" : "95",
+    "keywords" : [ "hugo", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Hugo搭建个人博客</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-11-11 itemprop="datePublished">November 11, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/hugo/"> hugo </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>参考文章：</p>
+
+<ul>
+<li><a href="https://gohugo.io/getting-started/quick-start/">hugo quick start</a></li>
+<li><a href="https://jimmysong.io/posts/building-github-pages-with-hugo/">零基础使用Hugo和GitHub Pages创建自己的博客</a></li>
+</ul>
+
+<h2 id="安装hugo">安装hugo</h2>
+
+<pre><code class="language-shell">pacman -S hugo
+hugo version
+</code></pre>
+
+<h2 id="创建网站">创建网站</h2>
+
+<pre><code class="language-shell">hugo new site my-site
+</code></pre>
+
+<p>这条命令会创建一个my-site文件夹，目录结构如下：</p>
+
+<pre><code class="language-shell">my-site/
+├── archetypes          content的内容类型，在创建新内容时自动生成内容的配置。默认为title，date，draft。
+├── config.toml         网站配置文件
+├── content             网站内容，全部使用markdown格式
+├── data                
+├── layouts             包含网站的模板，决定内容的显示方式
+├── resources
+├── static              包含css，js，fonts，media，决定网站的外观
+└── themes              主题，默认主题从这里选取
+</code></pre>
+
+<h2 id="添加主题">添加主题</h2>
+
+<p><a href="https://themes.gohugo.io/">hugo 主题仓库</a></p>
+
+<pre><code class="language-shell">cd my-site
+# 安装所有主题
+git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes
+# 安装某一个主题
+cd themes
+git clone URL_TO_THEME
+# 在配置文件中指定所要使用的主题
+echo 'theme = &quot;theme-name&quot;' &gt;&gt; config.toml
+# 在启动时指定主题
+hugo server -t beg
+</code></pre>
+
+<h2 id="添加新的文章">添加新的文章</h2>
+
+<pre><code class="language-shell">hugo new post/first.md   # 默认添加到content目录
+</code></pre>
+
+<h2 id="本地预览网站">本地预览网站</h2>
+
+<pre><code class="language-shell">hugo server -D # -D表示网站中包含草稿（文件头上draft为true）
+</code></pre>
+
+<h2 id="部署网站到github">部署网站到github</h2>
+
+<p>github提供了github pages服务，为每个用户分配了一个<code>https://account-name.github.io</code>域名，可以用来部署个人博客。具体详见<a href="https://pages.github.com/">官方教程</a></p>
+
+<pre><code class="language-shell">hugo  # 生成静态网页，默认为public文件夹。之后将这个文件夹下的内容push到github pages对应的那个仓库里就完成了。
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/>https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/hugo/">
+                    #hugo</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="next" rel="next" title="Hugo配置文件详解">Hugo配置文件详解&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Shell下进制转换 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Shell下进制转换 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Shell下进制转换",
+    "headline" : "Shell下进制转换",
+    "description" : " shell脚本的数值默认按10进制处理。以0开头的数字为8进制，以0x开头的数字为16进制。使用BASE#NUMBER这种形式可以表示其他进制（2-64）。\n其他进制转10进制 ((num=012)) ((num=0x12)) ((num=16#FF)) echo $num echo $((012)) echo $((16#FF)) let num=012 let num=16#12 echo $num printf \x26quot;%d\\n\x26quot; 0xf printf \x26quot;%d\\n\x26quot; 011  shell中的”=“没有值类型，默认会将后面的值变成字符串。而(())中可以进行数值运算\n十进制转其他进制 printf \x26quot;%x\\n\x26quot; 15 echo \x26quot;obase=进制;值\x26quot; | bc echo \x26quot;obase=64;12\x26quot; | bc  ",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-02-11 21:41:43 \x2b0800 CST",
+    "dateModified" : "2019-02-11 21:41:43 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/shell\/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2\/",
+    "wordCount" : "36",
+    "keywords" : [ "shell","进制", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Shell下进制转换</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-02-11 itemprop="datePublished">February 11, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/shell/"> shell </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>shell脚本的数值默认按10进制处理。以0开头的数字为8进制，以0x开头的数字为16进制。使用<code>BASE#NUMBER</code>这种形式可以表示其他进制（2-64）。</p>
+
+<h4 id="其他进制转10进制">其他进制转10进制</h4>
+
+<pre><code class="language-shell">((num=012))
+((num=0x12))
+((num=16#FF))
+echo $num
+echo $((012))
+echo $((16#FF))
+
+let num=012
+let num=16#12
+echo $num
+
+printf &quot;%d\n&quot; 0xf
+printf &quot;%d\n&quot; 011
+</code></pre>
+
+<p>shell中的”=“没有值类型，默认会将后面的值变成字符串。而<code>(())</code>中可以进行数值运算</p>
+
+<h4 id="十进制转其他进制">十进制转其他进制</h4>
+
+<pre><code class="language-shell">printf &quot;%x\n&quot; 15
+
+echo &quot;obase=进制;值&quot; | bc
+echo &quot;obase=64;12&quot; | bc
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/>https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/shell/">
+                    #shell</a></span>
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/%E8%BF%9B%E5%88%B6/">
+                    #进制</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="prev" rel="prev" title="Hugo配置文件详解"><i class="iconfont icon-left"></i>&nbsp;Hugo配置文件详解</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/" class="next" rel="next" title="pkill和pgrep使用">pkill和pgrep使用&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

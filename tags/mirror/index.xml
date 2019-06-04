@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mirror on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/mirror/</link>
+    <description>Recent content in mirror on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Apr 2019 16:45:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Archlinux选择镜像源</title>
+      <link>https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <pubDate>Tue, 30 Apr 2019 16:45:05 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <description> 参考：
+ arch-wiki Mirrors arch-wiki reflector  手动生成镜像源 # 选择中国的https协议的完全同步的镜像源，按下载速度排序后覆盖到mirrorlist. /usr/bin/reflector --country China -p http --latest 20 -p https --sort rate &amp;gt;&amp;gt; /etc/pacman.d/mirrorlist  定时同步镜像源 /etc/cron.weekly/mirrorlist -------------------------------- #! /bin/bash /usr/bin/reflector --country China -p http --latest 20 -p https --sort rate &amp;gt;&amp;gt; /etc/pacman.d/mirrorlist  </description>
+    </item>
+    
+  </channel>
+</rss>

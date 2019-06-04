@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Hugo配置文件详解 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Hugo配置文件详解 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Hugo配置文件详解",
+    "headline" : "Hugo配置文件详解",
+    "description" : " 参考文章：\n Configurate Hugo  hugo默认会在网站根目录下查找配置文件，依次会使用config.toml,config.yaml,config.json。也可以使用下面命令来指定配置文件。\nhugo --config debugconfig.toml hugo --config a.toml,b.toml,c.toml  查看配置 hugo config # 查看当前配置  基本配置 下面的所有的属性由config-name(default-value)组成。\nbaseUrl(\x26quot;http:\/\/example.org\x26quot;) 网站主页url defaultContentLanguage(\x26quot;en\x26quot;) paginate(10) 分页中每页的默认数量 metaDataFormat(\x26quot;toml\x26quot;) 前面的元数据格式。有效值，toml，yaml，json theme(\x26quot;\x26quot;) 指定主题 title(\x26quot;\x26quot;) 网站名字 watch(false) 是否启动热部署。 newContentEditor(\x26quot;\x26quot;) 创建新内容时的默认编辑器 noChmod(false) 是否同步文件的权限 noTimes(false) 是否同步文件的修改时间 pygmentsCodeFencesGuessSyntax(false) 在代码没有指定语言的时候，启用语法猜测。 pygmentsStyle(\x26quot;monokai\x26quot;) 语法高亮的颜色主题。[可用语法主题](https:\/\/help.farbox.com\/pygments.html) pygmentsUseClasses(false) 使用外部css来实现语法高亮 summaryLength(70) timeout(10000) 生成页面的超时时间，默认10s。这个设置主要是为了避免递归页面 buildDrafts(false) 是否显示标注为draft的content buildExpired(false) 是否显示过期的内容 buildFuture(false) 是否显示未来发布的内容 archetypeDir(\x26quot;archtypes\x26quot;) assetDir(\x26quot;assets\x26quot;) contentDir(\x26quot;content\x26quot;) dataDir(\x26quot;data\x26quot;) publicDir(\x26quot;public\x26quot;) themesDir(\x26quot;themes\x26quot;) blackfriday canonifyURLs(false) 是否将相对url转为绝对 defaultContentLanguageInSubdir(false) 在子文件夹中渲染默认语言，例如：content\/en\/。网站的根目录将重定向到\/en\/  使用环境变量来配置 ",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-11-11 19:19:36 \x2b0800 CST",
+    "dateModified" : "2018-11-11 19:19:36 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/hugo\/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3\/",
+    "wordCount" : "63",
+    "keywords" : [ "hugo", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Hugo配置文件详解</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-11-11 itemprop="datePublished">November 11, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/hugo/"> hugo </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>参考文章：</p>
+
+<ul>
+<li><a href="https://gohugo.io/getting-started/configuration/">Configurate Hugo</a></li>
+</ul>
+
+<p>hugo默认会在网站根目录下查找配置文件，依次会使用<code>config.toml</code>,<code>config.yaml</code>,<code>config.json</code>。也可以使用下面命令来指定配置文件。</p>
+
+<pre><code class="language-shell">hugo --config debugconfig.toml
+hugo --config a.toml,b.toml,c.toml
+</code></pre>
+
+<h2 id="查看配置">查看配置</h2>
+
+<pre><code class="language-shell">hugo config # 查看当前配置
+</code></pre>
+
+<h2 id="基本配置">基本配置</h2>
+
+<p>下面的所有的属性由<code>config-name(default-value)</code>组成。</p>
+
+<pre><code>baseUrl(&quot;http://example.org&quot;)  网站主页url
+defaultContentLanguage(&quot;en&quot;)
+paginate(10)            分页中每页的默认数量
+metaDataFormat(&quot;toml&quot;)  前面的元数据格式。有效值，toml，yaml，json
+theme(&quot;&quot;)               指定主题
+title(&quot;&quot;)               网站名字
+watch(false)            是否启动热部署。
+
+newContentEditor(&quot;&quot;)    创建新内容时的默认编辑器
+noChmod(false)          是否同步文件的权限
+noTimes(false)          是否同步文件的修改时间
+pygmentsCodeFencesGuessSyntax(false)    在代码没有指定语言的时候，启用语法猜测。
+pygmentsStyle(&quot;monokai&quot;)    语法高亮的颜色主题。[可用语法主题](https://help.farbox.com/pygments.html)
+pygmentsUseClasses(false)   使用外部css来实现语法高亮
+summaryLength(70)           
+timeout(10000)          生成页面的超时时间，默认10s。这个设置主要是为了避免递归页面
+
+buildDrafts(false)      是否显示标注为draft的content
+buildExpired(false)     是否显示过期的内容
+buildFuture(false)      是否显示未来发布的内容
+
+archetypeDir(&quot;archtypes&quot;)
+assetDir(&quot;assets&quot;)
+contentDir(&quot;content&quot;)
+dataDir(&quot;data&quot;)
+publicDir(&quot;public&quot;)
+themesDir(&quot;themes&quot;)
+
+blackfriday
+canonifyURLs(false)     是否将相对url转为绝对
+defaultContentLanguageInSubdir(false) 在子文件夹中渲染默认语言，例如：content/en/。网站的根目录将重定向到/en/
+</code></pre>
+
+<h2 id="使用环境变量来配置">使用环境变量来配置</h2>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/>https://falconkaze.github.io/posts/hugo/hugo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/hugo/">
+                    #hugo</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/hugo/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="prev" rel="prev" title="Hugo搭建个人博客"><i class="iconfont icon-left"></i>&nbsp;Hugo搭建个人博客</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" class="next" rel="next" title="Shell下进制转换">Shell下进制转换&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/spring/</link>
+    <description>Recent content in spring on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 May 2019 19:35:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring获取bean的几种方法</title>
+      <link>https://falconkaze.github.io/posts/java/spring/spring%E8%8E%B7%E5%8F%96bean%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 09 May 2019 19:35:21 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/spring/spring%E8%8E%B7%E5%8F%96bean%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
+      <description>参考
+ spring获取bean的几种方法  </description>
+    </item>
+    
+    <item>
+      <title>Static变量注入bean</title>
+      <link>https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/</link>
+      <pubDate>Thu, 09 May 2019 17:57:22 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/</guid>
+      <description>在springframework中，不能将bean注入到static域中。比如下面的代码，虽然启动不会抛异常，但是使用时会抛NullPointerException。
+@Autowired private static DemoBean demoBean;  之所以这样，是因为static变量属于类的特性，在类加载的时候就要进行赋值，但是类的加载是JVM做的，Spring无法在类加载的时候将bean注入进去。所以spring是基于对象层面的依赖注入。
+但是实际工作中有时候确实需要将bean赋值给static变量，这时候就需要进行特殊处理。有下面几种方法：
+ 将类注册为Bean，通过成员方法注入  public class Test{ private static DemoBean demoBean; @Autowired public void setDemoBean(DemoBean demoBean){ Test.demoBean = demoBean; } }   将类注册为Bean，通过@PostConstruct在Bean初始化时注册。  public class Test{ private static DemoBean demoBean; @Autowired private DemoBean tmpDemoBean; @PostContrust public void init(){ Test.demoBean = tmpDemoBean; } }   自己获取Bean，然后将赋值给static变量。参考spring获取bean的几种方法  本文介绍了几种将Bean注入给static变量的方法，但是如果没有特殊的需求，要尽量避免将Bean注入给static变量，这与spring的初衷冲突。</description>
+    </item>
+    
+  </channel>
+</rss>

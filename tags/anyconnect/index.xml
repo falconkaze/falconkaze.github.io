@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>anyconnect on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/anyconnect/</link>
+    <description>Recent content in anyconnect on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Apr 2019 20:20:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/anyconnect/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Openconnect使用</title>
+      <link>https://falconkaze.github.io/posts/linux/openconnect%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 08 Apr 2019 20:20:48 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/openconnect%E4%BD%BF%E7%94%A8/</guid>
+      <description> archlinux wiki archlinux bug  </description>
+    </item>
+    
+    <item>
+      <title>Unit Dbus Org.freedesktop.resolve1.service not found</title>
+      <link>https://falconkaze.github.io/posts/linux/unit-dbus-org.freedesktop.resolve1.service-not-found/</link>
+      <pubDate>Mon, 08 Apr 2019 20:16:46 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/unit-dbus-org.freedesktop.resolve1.service-not-found/</guid>
+      <description> Archlinux bugs  解决方案:
+systemctl enable systemd-resolved.service  </description>
+    </item>
+    
+  </channel>
+</rss>

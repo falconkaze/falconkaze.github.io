@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pkill on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/pkill/</link>
+    <description>Recent content in pkill on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Feb 2019 19:41:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/pkill/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pkill和pgrep使用</title>
+      <link>https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 14 Feb 2019 19:41:50 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/</guid>
+      <description> pgrep和pkill是用来基于名字或其他参数来检索进程或者给进程发送系统信号的。
+语法：
+pgrep [options] pattern pkill [options] pattern  通常用法 pgrep pgrep -u root sshd # 指定用户拥有的进程名匹配sshd的进程的PID pgrep -u root,docker # 指定多个用户（or）  pkill pkill -t pts/12 # 关闭指定的终端（用来强制踢人）  可以使用who，w来查看当前的所有用户。
+命令参数 </description>
+    </item>
+    
+  </channel>
+</rss>

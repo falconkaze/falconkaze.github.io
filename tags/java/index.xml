@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/java/</link>
+    <description>Recent content in java on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Mar 2019 10:01:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java对象关系判断</title>
+      <link>https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/</link>
+      <pubDate>Tue, 05 Mar 2019 10:01:05 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/</guid>
+      <description> 判断对象是不是类的实例 使用instanceof。一个类的对象也是它超类或超接口的实例，通常在类型强转前需要instanceof判断，避免抛出异常。
+Object value = new Integer; if(value instanceof CharSequence){ System.out.println(&amp;quot;value is not a instance of CharSequence&amp;quot;); }  判断Class对象对应的类之间的关系 使用class1.isAssignableFrom(class2)，判断class1表示类或接口是否和class2表示的相同或者是其超类或者超接口，返回true、false。基本类型没有超类或超接口，也就是说当class2为基本类型的class对象时，只有class1为也为class2时，才返回true。
+System.out.println(&amp;quot;&amp;quot; + int.class.isAssignableFrom(int.class)); System.out.println(&amp;quot;&amp;quot; + Object.class.isAssignableFrom(int.class)); System.out.println(&amp;quot;&amp;quot; + Object.class.isAssignableFrom(String.class)); System.out.println(&amp;quot;&amp;quot; + Object.class.isAssignableFrom(char.class));  </description>
+    </item>
+    
+  </channel>
+</rss>

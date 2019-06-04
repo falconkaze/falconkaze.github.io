@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>stream on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/stream/</link>
+    <description>Recent content in stream on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Mar 2019 18:31:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/stream/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java8 Stream常用操作</title>
+      <link>https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 06 Mar 2019 18:31:24 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/java/stream/java8-%E6%B5%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>所有的流操作都有一种共同的结构，具有一个流来源，0或多个中间操作，一个终止操作。
+创建流    方法 描述     myCollection.stream()    Stream.of(T&amp;hellip;)    Stream.of(T)    Stream.empty()    Stream.iterate(T, UnaryOperator)    Stream.generate(Supplier)    IntStream.range(lower,upper)    myBufferedReader.lines()    myBitSet.Stream()    myString.chars()     中间操作 中间操作负责处理流中的每个元素。
+ flatMap  Stream&amp;lt;R&amp;gt; flatMap(Function&amp;lt;T, Stream&amp;lt;R&amp;gt;)将源流中的每个元素转为新的流，然后将这些流中的元素合并为一个新的流。
+List&amp;lt;String&amp;gt; array1 = Arrays.asList(&amp;quot;test-101&amp;quot;,&amp;quot;test-102&amp;quot;); List&amp;lt;String&amp;gt; array2 = Arrays.asList(&amp;quot;test-201&amp;quot;,&amp;quot;test-202&amp;quot;); List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; lists = Arrays.</description>
+    </item>
+    
+  </channel>
+</rss>

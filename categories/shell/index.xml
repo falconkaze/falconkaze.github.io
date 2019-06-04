@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shell on 每天进步一点点</title>
+    <title>shell on 每天进步一点点</title>
     <link>https://falconkaze.github.io/categories/shell/</link>
-    <description>Recent content in Shell on 每天进步一点点</description>
+    <description>Recent content in shell on 每天进步一点点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Feb 2019 21:41:43 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Feb 2019 19:41:50 +0800</lastBuildDate>
     
 	<atom:link href="https://falconkaze.github.io/categories/shell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>pkill和pgrep使用</title>
+      <link>https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 14 Feb 2019 19:41:50 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/shell/pkill%E5%92%8Cpgrep%E4%BD%BF%E7%94%A8/</guid>
+      <description> pgrep和pkill是用来基于名字或其他参数来检索进程或者给进程发送系统信号的。
+语法：
+pgrep [options] pattern pkill [options] pattern  通常用法 pgrep pgrep -u root sshd # 指定用户拥有的进程名匹配sshd的进程的PID pgrep -u root,docker # 指定多个用户（or）  pkill pkill -t pts/12 # 关闭指定的终端（用来强制踢人）  可以使用who，w来查看当前的所有用户。
+命令参数 </description>
+    </item>
+    
+    <item>
       <title>Shell下进制转换</title>
-      <link>https://falconkaze.github.io/article/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</link>
+      <link>https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</link>
       <pubDate>Mon, 11 Feb 2019 21:41:43 +0800</pubDate>
       
-      <guid>https://falconkaze.github.io/article/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</guid>
+      <guid>https://falconkaze.github.io/posts/shell/shell%E4%B8%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/</guid>
       <description> shell脚本的数值默认按10进制处理。以0开头的数字为8进制，以0x开头的数字为16进制。使用BASE#NUMBER这种形式可以表示其他进制（2-64）。
 其他进制转10进制 ((num=012)) ((num=0x12)) ((num=16#FF)) echo $num echo $((012)) echo $((16#FF)) let num=012 let num=16#12 echo $num printf &amp;quot;%d\n&amp;quot; 0xf printf &amp;quot;%d\n&amp;quot; 011  shell中的”=“没有值类型，默认会将后面的值变成字符串。而(())中可以进行数值运算
 十进制转其他进制 printf &amp;quot;%x\n&amp;quot; 15 echo &amp;quot;obase=进制;值&amp;quot; | bc echo &amp;quot;obase=64;12&amp;quot; | bc  </description>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>archlinux on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/archlinux/</link>
+    <description>Recent content in archlinux on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Jun 2019 19:09:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/archlinux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Archlinux降级软件包</title>
+      <link>https://falconkaze.github.io/posts/linux/archlinux%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</link>
+      <pubDate>Tue, 04 Jun 2019 19:09:27 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/archlinux%E9%99%8D%E7%BA%A7%E8%BD%AF%E4%BB%B6%E5%8C%85/</guid>
+      <description>参考
+ 如何在Archlinux中降级软件包  语法:
+sudo downgrade [PACKAGE, ...] [-- [PACMAN OPTIONS]]  假设要降级tmux，运行
+sudo downgrade tmux  运行结果(会列出本地缓存和远程镜像中所有可用的包)：
+- 1) tmux 2.8 1 x86_64 (remote) - 2) tmux 2.8 1 x86_64 (local) - 3) tmux 2.9 1 x86_64 (remote) - 4) tmux 2.9 1 x86_64 (local)  然后输入需要的包号码，回车后就会开始安装</description>
+    </item>
+    
+    <item>
+      <title>Archlinux选择镜像源</title>
+      <link>https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <pubDate>Tue, 30 Apr 2019 16:45:05 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <description> 参考：
+ arch-wiki Mirrors arch-wiki reflector  手动生成镜像源 # 选择中国的https协议的完全同步的镜像源，按下载速度排序后覆盖到mirrorlist. /usr/bin/reflector --country China -p http --latest 20 -p https --sort rate &amp;gt;&amp;gt; /etc/pacman.d/mirrorlist  定时同步镜像源 /etc/cron.weekly/mirrorlist -------------------------------- #! /bin/bash /usr/bin/reflector --country China -p http --latest 20 -p https --sort rate &amp;gt;&amp;gt; /etc/pacman.d/mirrorlist  </description>
+    </item>
+    
+    <item>
+      <title>Openconnect使用</title>
+      <link>https://falconkaze.github.io/posts/linux/openconnect%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 08 Apr 2019 20:20:48 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/openconnect%E4%BD%BF%E7%94%A8/</guid>
+      <description> archlinux wiki archlinux bug  </description>
+    </item>
+    
+    <item>
+      <title>Unit Dbus Org.freedesktop.resolve1.service not found</title>
+      <link>https://falconkaze.github.io/posts/linux/unit-dbus-org.freedesktop.resolve1.service-not-found/</link>
+      <pubDate>Mon, 08 Apr 2019 20:16:46 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/linux/unit-dbus-org.freedesktop.resolve1.service-not-found/</guid>
+      <description> Archlinux bugs  解决方案:
+systemctl enable systemd-resolved.service  </description>
+    </item>
+    
+  </channel>
+</rss>

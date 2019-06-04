@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>regex on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/tags/regex/</link>
+    <description>Recent content in regex on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Feb 2019 22:32:06 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/tags/regex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>正则表达式</title>
+      <link>https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Mon, 18 Feb 2019 22:32:06 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>正则表达式就是一种描述字符串的语言。
+在java中用\\来表示转义，\\\\表示普通的反斜杠；而在其他语言中，用\表示转义符，\\表示普通的反斜杠。下面都用\来表示转义。
+字符 B 指定字符B \xhh 十六进制值为0xhh的字符 \uhhhh 十六进制表示为0xhhhh的Unicode字符 \t 制表符 \n 换行符 \r 回车 \f 换页 \e 转义（Escape）  字符类 . 任意字符 [abc] a或b或c，和 a|b|c作用相同 [^abc] 除了a，b，c之外的任一字符 [a-zA-Z] 从a到z或从A-Z的任一字符 [abc[hij]] abchij六个字符中任意一个，和a|b|c|h|i|j作用相同（合并） [a-z&amp;amp;&amp;amp;[hij]] hij三个字符中任意一个（前后取交集） \s 空白符（空格，tab，换行，换页和回车） \S 非空白符，等同于 [^\s] \d 任一阿拉伯数字，等同于[0-9] \D 非阿拉伯数据，等同于[^0-9] \w 词字符，等同于[a-zA-Z0-9] \W 非词字符，等同于[^\w]  逻辑操作符 XY 匹配XY这个整体 X|Y X或者Y (X) 捕获组（capturing group），可以在表达式中中\i引用第i个捕获组  组是用括号划分的正则表达式，可以根据组的编号来引用某个组。组号为0表示整个表达式，组号1标识第一对括号括起的组，以此类推。
+边界匹配符 ^ 一行的起始 $ 一行的结束 \b 词的边界 \B 非词的边界 \G 前一个匹配的结束  量词 量词描述了一个pattern匹配输入文本的方式：</description>
+    </item>
+    
+  </channel>
+</rss>

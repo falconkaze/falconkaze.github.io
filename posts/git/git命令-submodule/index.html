@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Git命令 Submodule | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Git命令 Submodule | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Git命令 Submodule",
+    "headline" : "Git命令 Submodule",
+    "description" : "参考文档\n Git 工具 - 子模块  有时候，我们工作中的项目需要包含并使用另一个项目。我们想把它们作为两个独立的项目，同时又想在一个项目中使用另一个。这时候就需要用到submodule命令了。例如：用hugo搭建博客的时候需要用到其他人开发的模板。\n将一个git仓库作为当前仓库的子模块\ngit submodule add https:\/\/github.com\/budparr\/gohugo-theme-ananke.git ananke  git submodule add命令会在仓库主目录创建一个.gitmodule文件，这个文件配置了子模块项目url与本地目录之间的映射。这个文件也受版本管理，这样其他人克隆项目的时候也可以很方便地获取到子模块。\ngit会把子模块目录作为一个特殊的提交，所以提交的时候可以看到这个文件夹，但是不会跟踪它的内容。\ngit clone仓库后，并不会clone子模块，需要使用下面这两个命令。\ngit submodule init # clone仓库后，初始化本地配置文件 git submodule update # 抓取子模块的提交  也可以为git clone指定--recursive选项，这样可以自动初始化并更新仓库的每一个子模块。\ngit clone --recursive https:\/\/github.com\/chaconinc\/MainProject  如果需要更新子模块中的代码，可以进入子模块目录使用fetch或pull进行更新，也可以使用下面的命令\ngit submodule update --remote themes\/gohugo-theme-ananke  ",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-02-23 14:55:28 \x2b0800 CST",
+    "dateModified" : "2019-02-23 14:55:28 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/git\/git%E5%91%BD%E4%BB%A4-submodule\/",
+    "wordCount" : "40",
+    "keywords" : [ "git", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Git命令 Submodule</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-02-23 itemprop="datePublished">February 23, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://falconkaze.github.io/categories/git/"> git </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><strong>参考文档</strong></p>
+
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">Git 工具 - 子模块</a></li>
+</ul>
+
+<p>有时候，我们工作中的项目需要包含并使用另一个项目。我们想把它们作为两个独立的项目，同时又想在一个项目中使用另一个。这时候就需要用到<code>submodule</code>命令了。例如：用hugo搭建博客的时候需要用到其他人开发的模板。</p>
+
+<p>将一个git仓库作为当前仓库的子模块</p>
+
+<pre><code class="language-bash">git submodule add https://github.com/budparr/gohugo-theme-ananke.git ananke
+</code></pre>
+
+<p><code>git submodule add</code>命令会在仓库主目录创建一个<code>.gitmodule</code>文件，这个文件配置了子模块项目url与本地目录之间的映射。这个文件也受版本管理，这样其他人克隆项目的时候也可以很方便地获取到子模块。</p>
+
+<p>git会把子模块目录作为一个特殊的提交，所以提交的时候可以看到这个文件夹，但是不会跟踪它的内容。</p>
+
+<p><code>git clone</code>仓库后，并不会clone子模块，需要使用下面这两个命令。</p>
+
+<pre><code class="language-bash">git submodule init # clone仓库后，初始化本地配置文件
+git submodule update # 抓取子模块的提交
+</code></pre>
+
+<p>也可以为<code>git clone</code>指定<code>--recursive</code>选项，这样可以自动初始化并更新仓库的每一个子模块。</p>
+
+<pre><code class="language-bash">git clone --recursive https://github.com/chaconinc/MainProject
+</code></pre>
+
+<p>如果需要更新子模块中的代码，可以进入子模块目录使用<code>fetch</code>或<code>pull</code>进行更新，也可以使用下面的命令</p>
+
+<pre><code class="language-bash">git submodule update --remote themes/gohugo-theme-ananke
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/>https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-submodule/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/git/">
+                    #git</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/git/git%E5%91%BD%E4%BB%A4-remote/" class="prev" rel="prev" title="Git命令 remote"><i class="iconfont icon-left"></i>&nbsp;Git命令 remote</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/java/java%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/" class="next" rel="next" title="Java对象关系判断">Java对象关系判断&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

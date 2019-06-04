@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on 每天进步一点点</title>
+    <link>https://falconkaze.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on 每天进步一点点</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jun 2019 15:06:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://falconkaze.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>单例模式</title>
+      <link>https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 02 Jun 2019 15:06:29 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/design-pattern/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>参考:
+ 双重检查锁问题 JAVA设计模式之单例模式  对于一些类来说，只有一个实例是非常重要的。比如计算机系统可以安装多个窗口管理器，但是同一时间只能使用一个；火车售票处可以有多个窗口同时出售车票，但是票源都是来自同一个地方。
+单例模式的作用就是保证一个类只有一个实例，并提供一个访问它的全局访问点。选择单例模式通常是为了避免不一致状态。除了避免不一致之外，还有一种情况可以使用单例模式：当类的对象是无状态的，或者它的状态事实不可变时，这时候创建多个对象的作用与一个对象没有什么区别，可以用单例模式避免对象的重复创建。比如在Spring mvc程序中，Controller，Service，Dao通常都是单例。
+单例模式有以下特点：
+ 单例类只能有一个实例。
+ 单例类必须有一个接口来给其他外部提供这一实例。
+ 通常单例类来创建自己的唯一实例。
+  单例模式的实现方法有好几种：懒汉式单例、饿汉式单例、登记式单例。
+懒汉式单例 懒汉式单例的特点是在需要时才创建实例，可以避免或延迟对象创建的开销和内存的消耗。
+ 线程不安全的实现  public class Singleton{ private Singleton{} private static Singleton single = null; public static Singleton getInstance(){ if (single == null){ single = new Singleton(); } return single; } }  这里将构造方法设为private，将对象的创建权独占在本类中（实际上，通过java反射机制可以实例化构造方法为private的类的），从而保证单例的实现。因为上面例子中存在先检查后执行的逻辑，并且没有进行同步，所以在多线程中可能会有问题。下面介绍几种多线程下的懒汉单例实现。
+ 在getInstance方法上加同步锁  public static synchronized Singleton getInstance(){ if (single == null){ single = new Singleton(); } return single; }  这个方法可以保证线程安全，但是单例模式只需要在对象创建的时候进行同步，对象创建后就没必要进行同步了，所以这种方法不必要的性能损耗。</description>
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://falconkaze.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 01 Jun 2019 21:30:50 +0800</pubDate>
+      
+      <guid>https://falconkaze.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description> 设计模式分类 设计模式分为三大类：
+ 创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。 结构型模式，共七种：适配器模式、装饰者模式、代理模式、外观模式、桥接模式、组合模式、享元模式。 行为型模式，共11种：策略模式、模板方法模式、观察者模式、迭代器模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。  </description>
+    </item>
+    
+  </channel>
+</rss>

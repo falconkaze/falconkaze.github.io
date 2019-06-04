@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  <link rel="prev" href="https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/" />
+  <link rel="next" href="https://falconkaze.github.io/posts/java/spring/spring%E8%8E%B7%E5%8F%96bean%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" />
+  <link rel="canonical" href="https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Static变量注入bean | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="Static变量注入bean | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Static变量注入bean",
+    "headline" : "Static变量注入bean",
+    "description" : "在springframework中，不能将bean注入到static域中。比如下面的代码，虽然启动不会抛异常，但是使用时会抛NullPointerException。\n@Autowired private static DemoBean demoBean;  之所以这样，是因为static变量属于类的特性，在类加载的时候就要进行赋值，但是类的加载是JVM做的，Spring无法在类加载的时候将bean注入进去。所以spring是基于对象层面的依赖注入。\n但是实际工作中有时候确实需要将bean赋值给static变量，这时候就需要进行特殊处理。有下面几种方法：\n 将类注册为Bean，通过成员方法注入  public class Test{ private static DemoBean demoBean; @Autowired public void setDemoBean(DemoBean demoBean){ Test.demoBean = demoBean; } }   将类注册为Bean，通过@PostConstruct在Bean初始化时注册。  public class Test{ private static DemoBean demoBean; @Autowired private DemoBean tmpDemoBean; @PostContrust public void init(){ Test.demoBean = tmpDemoBean; } }   自己获取Bean，然后将赋值给static变量。参考spring获取bean的几种方法  本文介绍了几种将Bean注入给static变量的方法，但是如果没有特殊的需求，要尽量避免将Bean注入给static变量，这与spring的初衷冲突。",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-05-09 17:57:22 \x2b0800 CST",
+    "dateModified" : "2019-05-09 17:57:22 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/posts\/java\/spring\/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean\/",
+    "wordCount" : "49",
+    "keywords" : [ "spring", "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Static变量注入bean</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-05-09 itemprop="datePublished">May 9, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>在springframework中，不能将bean注入到static域中。比如下面的代码，虽然启动不会抛异常，但是使用时会抛<code>NullPointerException</code>。</p>
+
+<pre><code class="language-java">  @Autowired
+  private static DemoBean demoBean;
+</code></pre>
+
+<p>之所以这样，是因为static变量属于类的特性，在类加载的时候就要进行赋值，但是类的加载是JVM做的，Spring无法在类加载的时候将bean注入进去。所以spring是基于对象层面的依赖注入。</p>
+
+<p>但是实际工作中有时候确实需要将bean赋值给static变量，这时候就需要进行特殊处理。有下面几种方法：</p>
+
+<ol>
+<li>将类注册为Bean，通过成员方法注入</li>
+</ol>
+
+<pre><code class="language-java">  public class Test{
+
+    private static DemoBean demoBean;
+
+    @Autowired
+    public void setDemoBean(DemoBean demoBean){
+      Test.demoBean = demoBean;
+    }
+  }
+</code></pre>
+
+<ol>
+<li>将类注册为Bean，通过@PostConstruct在Bean初始化时注册。</li>
+</ol>
+
+<pre><code class="language-java">  public class Test{
+
+    private static DemoBean demoBean;
+
+    @Autowired
+    private DemoBean tmpDemoBean;
+
+    @PostContrust
+    public void init(){
+      Test.demoBean = tmpDemoBean;
+    }
+  }
+</code></pre>
+
+<ol>
+<li>自己获取Bean，然后将赋值给static变量。参考<a href="../spring获取bean的几种方法">spring获取bean的几种方法</a></li>
+</ol>
+
+<p>本文介绍了几种将Bean注入给static变量的方法，但是如果没有特殊的需求，要尽量避免将Bean注入给static变量，这与spring的初衷冲突。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/>https://falconkaze.github.io/posts/java/spring/static%E5%8F%98%E9%87%8F%E6%B3%A8%E5%85%A5bean/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://falconkaze.github.io/tags/spring/">
+                    #spring</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://falconkaze.github.io/posts/linux/archlinux%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90/" class="prev" rel="prev" title="Archlinux选择镜像源"><i class="iconfont icon-left"></i>&nbsp;Archlinux选择镜像源</a>
+         
+        
+        <a href="https://falconkaze.github.io/posts/java/spring/spring%E8%8E%B7%E5%8F%96bean%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" class="next" rel="next" title="Spring获取bean的几种方法">Spring获取bean的几种方法&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

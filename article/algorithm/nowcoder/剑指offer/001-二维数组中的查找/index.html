@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  
+  <link rel="canonical" href="https://falconkaze.github.io/article/algorithm/nowcoder/%E5%89%91%E6%8C%87offer/001-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           001 二维数组中的查找 | 每天进步一点点
+       
+  </title>
+  <meta name="title" content="001 二维数组中的查找 | 每天进步一点点">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/falconkaze.github.io"
+    },
+    "articleSection" : "article",
+    "name" : "001 二维数组中的查找",
+    "headline" : "001 二维数组中的查找",
+    "description" : "直接遍历所有元素，存在相等返回true，不然返回false。  运行时间159ms, 占用内存176316k\npublic boolean Find(int target, int [][] array) { for(int[] array1 : array){ for(int value :array1){ if (value == target){ return true; } } } return false; }   因为数组每一行都是递增的，可以使用二分查找。  时间 173ms, 占用内存17428k\npublic boolean Find(int target, int [][] array) { for(int[] array1: array){ if (array1.length == 0 || array1[0] \x26gt; target || array1[array1.length - 1] \x26lt; target){ continue; } if(array1[0] == target || array1[array1.",
+    "inLanguage" : "en-us",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-13 22:25:18 \x2b0800 CST",
+    "dateModified" : "2019-03-13 22:25:18 \x2b0800 CST",
+    "url" : "https:\/\/falconkaze.github.io\/article\/algorithm\/nowcoder\/%E5%89%91%E6%8C%87offer\/001-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE\/",
+    "wordCount" : "133",
+    "keywords" : [  "每天进步一点点"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://falconkaze.github.io">每天进步一点点</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">001 二维数组中的查找</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://falconkaze.github.io" rel="author"></a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-13 itemprop="datePublished">March 13, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <ol>
+<li>直接遍历所有元素，存在相等返回true，不然返回false。</li>
+</ol>
+
+<p>运行时间159ms, 占用内存176316k</p>
+
+<pre><code class="language-java">public boolean Find(int target, int [][] array) {
+  for(int[] array1 : array){
+    for(int value :array1){
+      if (value == target){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+</code></pre>
+
+<ol>
+<li>因为数组每一行都是递增的，可以使用二分查找。</li>
+</ol>
+
+<p>时间 173ms, 占用内存17428k</p>
+
+<pre><code class="language-java">public boolean Find(int target, int [][] array) {
+  for(int[] array1: array){
+    if (array1.length == 0 || array1[0] &gt; target || array1[array1.length - 1] &lt; target){
+      continue;
+    }
+    if(array1[0] == target || array1[array1.length - 1] == target){
+      return true;
+    }
+    int minIndex = 0;
+    int maxIndex = array1.length - 1;
+    int middleIndex;
+    int middleValue;
+    do {
+      middleIndex = (minIndex + maxIndex) / 2;
+      middleValue = array1[middleIndex];
+      if(middleValue == target){
+        return true;
+      }else if(middleValue &gt; target){
+        maxIndex = middleIndex;
+      }else {
+        minIndex = middleIndex;
+      }
+    // 如果是 minIndex &lt; maxIndex 的话, 会导致死循环.
+    }while(minIndex &lt; maxIndex - 1);
+  }
+  return false;
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://falconkaze.github.io/article/algorithm/nowcoder/%E5%89%91%E6%8C%87offer/001-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/>https://falconkaze.github.io/article/algorithm/nowcoder/%E5%89%91%E6%8C%87offer/001-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://falconkaze.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
